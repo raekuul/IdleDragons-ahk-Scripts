@@ -4,10 +4,20 @@
 ; THIS IS DESIGNED AROUND 1280 by 720 RESOLUTION
 target = IdleDragons.exe
 
-hour = 1800000
+Gui, Add, text, , Minutes per run
+Gui, Add, Edit, vDduration_in_minutes
+Gui, Add, Button, default, OK
+Gui, Show
+Return
+
+GuiClose:
+ButtonOK:
+Gui, Submit 
+
+duration_in_ms := Dduration_in_minutes * 60 * 1000
 
 reset_yes_x = 550
-reset_yes_y = 500
+reset_yes_y = 550
 
 go_to_map_x = 650
 go_to_map_y = 600
@@ -16,12 +26,15 @@ campaigns_x = 105
 torm_y = 100
 kelv_y = 175
 
+neverwinter_x = 570
+neverwinter_y = 600
+
 daggerford_x = 750
 daggerford_y = 580
 
 adventures_x = 400
-kelv_fp_y = 195 ; Ring of Regeneration free play
-torm_fp_y = 400 ; Mad Wizard free play
+ror_fp_y = 195 ; Ring of Regeneration free play
+mw_fp_y = 400 ; Mad Wizard free play
 
 go_x = 800
 go_y = 550
@@ -69,11 +82,11 @@ Loop
 	ControlFocus,, ahk_exe %target% ;
 	Click %go_to_map_x%, %go_to_map_y% ;
 	Sleep, 2000 ;
-	Click %campaigns_x%, %kelv_y% ; 
+	Click %campaigns_x%, %torm_y% ; 
 	Sleep, 1000 ;
-	Click %daggerford_x%, %daggerford_y% ;
+	Click %neverwinter_x%, %neverwinter_y% ;
 	Sleep, 1000 ;
-	Click %adventures_x%, %kelv_fp_y%
+	Click %adventures_x%, %mw_fp_y%
 	Sleep, 1000 ;
 	Click %go_x%, %go_y%
 	Sleep, 20000 ;
@@ -99,10 +112,6 @@ Loop
 	Sleep, 15000
 	Click %spec2_choice_left%, %spec2_choice_y%
 	Sleep, 1000
-	Click %slot1_x%, %swap_y%
-	Sleep, 1000
-	Click %cswap_x%, %cswap_y%
-	Sleep, 1000
 	Send {Control Down}
 	MouseClick, Left, %slot1_x%, %upgrade_y%
 	Sleep 100
@@ -114,5 +123,5 @@ Loop
 	}
 	Sleep, 1000
 	MouseMove %shop_x%, %shop_y%
-	Sleep, %hour%
+	Sleep, %duration_in_ms%
 }

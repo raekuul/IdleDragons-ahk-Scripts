@@ -20,7 +20,7 @@ x5 = 860
 next_x = 730
 next_y = 410
 
-Gui, Add, text, , Enter #:
+Gui, Add, text, , Enter the number of chests to open:
 Gui, Add, Edit, vNum
 Gui, Add, Button, default, OK
 Gui, Show

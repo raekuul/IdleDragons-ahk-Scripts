@@ -1,5 +1,5 @@
 target = IdleDragons.exe
-delay = 200000
+delay = 5000
 #1::
 Loop
 {
@@ -12,7 +12,7 @@ Loop
 {
 	ControlFocus,, ahk_exe %target% ;
 	ControlSend,, {2}, ahk_exe %target% ;
-	Sleep, 10000
+	Sleep, %delay%
 }
 
 #3::
@@ -48,8 +48,6 @@ Loop
 {
 	ControlFocus,, ahk_exe %target% ;
 	ControlSend,, {7}, ahk_exe %target% ;
-	Sleep, 9000
-	ControlSend,, {2}, ahk_exe %target% ;
 	Sleep, %delay%
 }
 #8::

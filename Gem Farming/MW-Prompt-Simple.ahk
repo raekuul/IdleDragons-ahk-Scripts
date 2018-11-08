@@ -7,8 +7,11 @@ CoordMode, Mouse, Client
 
 target = IdleDragons.exe
 
-Gui, Add, text, , Minutes per run (starts from second e press)
-Gui, Add, text, , Make sure Deekin is in your Torm 3rd saved formation!
+Gui, Add, text, , In the map, enable Hide Locked and Hide Completed.
+Gui, Add, text, , in the adventure, set your level strategy to "UPG".
+Gui, Add, text, , This script assumes you have Deekin.
+Gui, Add, text, , This script also assumes you have at least four familiars.
+Gui, Add, text, , Minutes per run (starts from setting last familiar):
 Gui, Add, Edit, vDduration_in_minutes
 Gui, Add, Button, default, OK
 Gui, Show
@@ -74,6 +77,8 @@ spec3_choice_y = 575
 spec3_cancel_x = 890
 spec3_cancel_y = 110
 
+charsheet_cancel_x = 1100
+charsheet_cancel_y = 130
 
 #r::
 Loop
@@ -106,11 +111,49 @@ Loop
 	Sleep, 1000 ;
 	Click %fam_box_x%, %fam_box_y%, down
 	Sleep, 200
+	Click %fam_far_x%, %fam_bot_in_y%, up
+	Sleep, 200
+	Click %fam_box_x%, %fam_box_y%, down
+	Sleep, 200
 	Click %fam_out_x%, %fam_top_out_y%, up
 	Sleep, 200
 	Click %fam_box_x%, %fam_box_y%, down
 	Sleep, 200
 	Click %fam_in_x%, %fam_top_in_y%, up
+	Sleep, 1000
+	
+	Loop 8
+	{
+		Sleep, 100
+		Click %slot1_x%, %upgrade_y% ;Deekin is eight upgrades off of Confidence in the Boss, requiring no Spec choice
+	}
+	Sleep, 1000
+	
+	Click 360, %upgrade_y% ; Bench 2
+	Sleep, 1000
+	
+	Click 475, %upgrade_y% ; Bench 3
+	Sleep, 1000
+	
+	Click 590, %upgrade_y% ; Bench 4
+	Sleep, 1000
+	
+	Click 705, %upgrade_y% ; Bench 5
+	Sleep, 1000
+	
+	Click 820, %upgrade_y% ; Bench 6
+	Sleep, 1000	
+	
+	Click 935, %upgrade_y% ; Bench 7
+	Sleep, 1000
+	
+	Click 1050, %upgrade_y% ; Bench 8
+	Sleep, 1000
+		
+	; Now we place our remaining familiars - we defer this to reduce number of variables in the champ upgrade process
+	Click %fam_box_x%, %fam_box_y%, down
+	Sleep, 200
+	Click %click_x%, %upgrade_y%, up
 	Sleep, 200
 	Click %fam_box_x%, %fam_box_y%, down
 	Sleep, 200
@@ -123,46 +166,10 @@ Loop
 	Click %fam_box_x%, %fam_box_y%, down
 	Sleep, 200
 	Click %fam_far_x%, %fam_top_in_y%, up
-	Sleep, 200
-	Click %fam_box_x%, %fam_box_y%, down
-	Sleep, 200
-	Click %fam_far_x%, %fam_bot_in_y%, up
-	Sleep, 1000
-	
-	Click %slot1_x%, %upgrade_y% ;Deekin Init
-	Sleep, 1000
-	Click 360, %upgrade_y% ;Celeste
-	Sleep, 1000
-	Click 475, %upgrade_y% ;Gromma init
-	Sleep, 1000
-	Click 590, %upgrade_y% ;Ishi
-	Sleep, 1000
-	Click 705, %upgrade_y% ;Calliope
-	Sleep, 1000
-	Click 820, %upgrade_y% ;Krond Init
-	Sleep, 1000
-	Click 935, %upgrade_y% ;Minsc
-	Sleep, 1000
-	Click 1050, %upgrade_y% ;Nrakk
+
 	Sleep, 1000
 	ControlSend,, {e}, ahk_exe %target% 
-	
-	Sleep, 1000
-	Send {Control Down}
-	MouseClick, Left, %slot1_x%, %upgrade_y% ; This will level Deekin to 100 in one click - doing this is setting-agnostic
-	Sleep 100
-	Send {Control Up}
-	Loop 8
-	{
-		Sleep, 1000
-		Click %slot1u_x%, %upgrade_y% ;Deekin is eight upgrades off of Confidence in the Boss, requiring no Spec choice
-	}
-	
-	Sleep, 1000 ; Now we place our seventh familiar on click damage upgrade - we defer this to reduce number of variables in the champ upgrade process
-	Click %fam_box_x%, %fam_box_y%, down
 	Sleep, 200
-	Click %click_x%, %upgrade_y%, up
-	Sleep, 200
-	
+	MouseMove %shop_x%, %shop_y%
 	Sleep, %duration_in_ms%
 }

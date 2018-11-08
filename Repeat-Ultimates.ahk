@@ -13,8 +13,6 @@ Loop
 	ControlFocus,, ahk_exe %target% ;
 	ControlSend,, {2}, ahk_exe %target% ;
 	Sleep, %delay% ;
-	ControlSend,, {5}, ahk_exe %target% ;
-	Sleep, %delay%
 }
 
 #3::

@@ -21,10 +21,10 @@ GuiClose:
 ButtonOK:
 Gui, Submit 
 
-duration_in_ms := Dduration_in_minutes * 60 * 1000
+duration_in_ms := (Dduration_in_minutes * 60 * 1000) - 65100
 
 reset_yes_x = 550
-reset_yes_y = 550
+reset_yes_y = 500
 
 go_to_map_x = 650
 go_to_map_y = 600
@@ -48,7 +48,7 @@ mw_fp_y = 350 ; Mad Wizard free play
 go_x = 800
 go_y = 550
 
-fam_box_x = 665
+fam_box_x = 670
 fam_box_y = 540
 
 fam_out_x = 945
@@ -94,14 +94,16 @@ Loop
 	ControlFocus,, ahk_exe %target% ;
 	Click %go_to_map_x%, %go_to_map_y% ;
 	Sleep, 2000 ;
-	Click %campaigns_x%, %torm_y% ; Select the Torm campaign
+	Click %campaigns_x%, %kelv_y% ; Switch to Tomb of Annihilation...
+	Sleep, 1000 ;
+	Click %campaigns_x%, %torm_y% ; ...and then back to Grand Tour (to reset the map)
 	Sleep, 1000 ;
 	Click %neverwinter_x%, %neverwinter_y% ; The location marker for Mad Wizard
 	Sleep, 1000 ;
 	Click %adventures_x%, %pan_top_y%, down
-	Sleep, 200
+	Sleep, 300
 	Click %adventures_x%, %pan_bot_y%, up
-	Sleep, 200
+	Sleep, 300
 	Click %adventures_x%, %mw_fp_y% ; Mad Wizard Free Play marker
 	Sleep, 1000 ;
 	Click %go_x%, %go_y%
@@ -132,9 +134,7 @@ Loop
 	Click 360, %upgrade_y% ;Celeste
 	Sleep, 1000
 	
-	Click 475, %upgrade_y% ;Gromma init
-	Sleep, 1000
-	Loop 8
+	Loop 9
 	{
 		Sleep, 100
 		Click 475, %upgrade_y% ; Gromma's spec choice (Mountain) helps her as tank
@@ -151,9 +151,7 @@ Loop
 	Click 705, %upgrade_y% ;Calliope
 	Sleep, 1000
 	
-	Click 820, %upgrade_y% ;Krond Init
-	Sleep, 1000	
-	Loop 2
+	Loop 3
 	{
 		Sleep, 100
 		Click 820, %upgrade_y% ; Krond is two upgrades off of Fire Bolt, requiring one 3spec choice (right)

@@ -2,6 +2,9 @@
 
 target = IdleDragons.exe
 
+Gui, Add, text, , WIN+m: Makos Ult + Zone Advance
+Gui, Add, text, , WIN+c: Makos Ult + Celeste Ult, wait for Makos
+Gui, Add, text, , WIN+e: Makos Ult + Celeste Ult, wait five minutes
 Gui, Add, text, , Enter Makos's Ult Cooldown Time
 Gui, Add, text, , (This is found on Makos's profile page)
 Gui, Add, Edit, vNum
@@ -19,7 +22,7 @@ Gui, Submit
 Makos := Num
 delay := (Makos + 5) * 1000
 delay_scaled := delay / Scale
-enrage := 360000 / Scale
+enrage := 340000 / Scale
 
 ; WIN+M - Makos, with a zone advance follow-up. Used on the march.
 
@@ -44,6 +47,8 @@ Loop
 	ControlSend,, {2}, ahk_exe %target% ;
 	Sleep, %delay_scaled%
 }
+
+; WIN+E - Makos, with a Celeste follow-up, then wait for the mobs to fill up. Use at your own risk!
 
 #e::
 Loop

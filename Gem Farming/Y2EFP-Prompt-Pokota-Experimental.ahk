@@ -24,26 +24,30 @@ Gui, Submit
 duration_in_ms := (Dduration_in_minutes * 60 * 1000)
 
 reset_yes_x = 550
-reset_yes_y = 500
+reset_yes_y = 550
 
 go_to_map_x = 650
 go_to_map_y = 600
 
 campaigns_x = 105
 torm_y = 100
-kelv_y = 175
+kelv_y = 170
+helm_y = 240
+eventy = 310
 
 neverwinter_x = 570
 neverwinter_y = 600
 
-daggerford_x = 750
-daggerford_y = 580
+waterdeep_x = 645
+waterdeep_y = 385
 
 adventures_x = 400
 pan_top_y = 110
 pan_bot_y = 600
 ror_fp_y = 195 ; Ring of Regeneration free play
 mw_fp_y = 350 ; Mad Wizard free play
+y1_fp_y = 195 ; Year 1 Event Free Play
+y2_fp_y = 350 ; Year 2 Event Free Play
 
 go_x = 800
 go_y = 550
@@ -94,11 +98,11 @@ Loop
 	ControlFocus,, ahk_exe %target% ;
 	Click %go_to_map_x%, %go_to_map_y% ;
 	Sleep, 2000 ;
-	Click %campaigns_x%, %kelv_y% ; Switch to Tomb of Annihilation...
+	Click %campaigns_x%, %torm_y% ; Switch to Tomb of Annihilation...
 	Sleep, 200 ;
-	Click %campaigns_x%, %torm_y% ; ...and then back to Grand Tour (to reset the map)
+	Click %campaigns_x%, %eventy% ; ...and then back to Grand Tour (to reset the map)
 	Sleep, 200 ;
-	Click %neverwinter_x%, %neverwinter_y% ; The location marker for Mad Wizard
+	Click %waterdeep_x%, %waterdeep_y% ; The location marker for Mad Wizard
 	Sleep, 1000 ;
 	Click %adventures_x%, %pan_top_y%, down
 	Sleep, 300 ;
@@ -124,7 +128,7 @@ Loop
 	Click %fam_in_x%, %fam_top_in_y%, up
 	Sleep, 3000
 	
-	Loop 8
+	Loop 9
 	{
 		Sleep, 100
 		Click %slot1_x%, %upgrade_y% ;Deekin is eight upgrades off of Confidence in the Boss, requiring no Spec choice
@@ -162,10 +166,10 @@ Loop
 	Click %charsheet_cancel_x%, %charsheet_cancel_y%
 	Sleep, 100
 	
-	Click 935, %upgrade_y% ;Minsc
+	Click 935, %upgrade_y% ; Vlahnya
 	Sleep, 100
 	
-	Click 1050, %upgrade_y% ;Nrakk
+	Click 1050, %upgrade_y% ; Nrakk
 	Sleep, 100
 		
 	; Now we place our remaining familiars - we defer this to reduce number of variables in the champ upgrade process

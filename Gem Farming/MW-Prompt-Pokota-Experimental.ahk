@@ -162,7 +162,9 @@ Loop
 	Click %charsheet_cancel_x%, %charsheet_cancel_y%
 	Sleep, 100
 	
-	Click 935, %upgrade_y% ;Minsc
+	Click 935, %upgrade_y% ; Black Viper is one upgrade off of Jewel Thief, requiring no spec choices.
+	Sleep, 100
+	Click 935, %upgrade_y% ; 
 	Sleep, 100
 	
 	Click 1050, %upgrade_y% ;Nrakk
@@ -187,5 +189,8 @@ Loop
 
 	Sleep, 100
 	ControlSend,, {e}, ahk_exe %target% 
+	Sleep, 100
+	Send ]
 	Sleep, %duration_in_ms%
+	Send [
 }

@@ -21,7 +21,7 @@ GuiClose:
 ButtonOK:
 Gui, Submit 
 
-duration_in_ms := Dduration_in_minutes * 60 * 1000
+duration_in_ms := (Dduration_in_minutes * 60 * 1000)
 
 reset_yes_x = 550
 reset_yes_y = 500
@@ -48,7 +48,7 @@ mw_fp_y = 350 ; Mad Wizard free play
 go_x = 800
 go_y = 550
 
-fam_box_x = 665
+fam_box_x = 670
 fam_box_y = 540
 
 fam_out_x = 945
@@ -94,82 +94,85 @@ Loop
 	ControlFocus,, ahk_exe %target% ;
 	Click %go_to_map_x%, %go_to_map_y% ;
 	Sleep, 2000 ;
-	Click %campaigns_x%, %torm_y% ; Select the Torm campaign
-	Sleep, 1000 ;
+	Click %campaigns_x%, %kelv_y% ; Switch to Tomb of Annihilation...
+	Sleep, 200 ;
+	Click %campaigns_x%, %torm_y% ; ...and then back to Grand Tour (to reset the map)
+	Sleep, 200 ;
 	Click %neverwinter_x%, %neverwinter_y% ; The location marker for Mad Wizard
 	Sleep, 1000 ;
 	Click %adventures_x%, %pan_top_y%, down
-	Sleep, 200
+	Sleep, 300 ;
 	Click %adventures_x%, %pan_bot_y%, up
-	Sleep, 200
+	Sleep, 300 ;
 	Click %adventures_x%, %mw_fp_y% ; Mad Wizard Free Play marker
-	Sleep, 1000 ;
+	Sleep, 200 ;
 	Click %go_x%, %go_y%
-	Sleep, 15000 ;
+	Sleep, 7500 ;
 	ControlSend,, {e}, ahk_exe %target% ; I have my Saved Formation #3 set to quickly tear through the orb on Z14. I suggest you do the same.
 	
-	Sleep, 1000 ;
+	Sleep, 100 ;
 	Click %fam_box_x%, %fam_box_y%, down
-	Sleep, 200
+	Sleep, 100
 	Click %fam_far_x%, %fam_bot_in_y%, up
-	Sleep, 200
+	Sleep, 100
 	Click %fam_box_x%, %fam_box_y%, down
-	Sleep, 200
+	Sleep, 100
 	Click %fam_out_x%, %fam_top_out_y%, up
-	Sleep, 200
+	Sleep, 100
 	Click %fam_box_x%, %fam_box_y%, down
-	Sleep, 200
+	Sleep, 100
 	Click %fam_in_x%, %fam_top_in_y%, up
-	Sleep, 1000
+	Sleep, 3000
 	
 	Loop 8
 	{
 		Sleep, 100
 		Click %slot1_x%, %upgrade_y% ;Deekin is eight upgrades off of Confidence in the Boss, requiring no Spec choice
 	}
-	Sleep, 1000
+	Sleep, 100
 	
-	Click 360, %upgrade_y% ; Bench 2
-	Sleep, 1000
+	Click 360, %upgrade_y% ;Celeste
+	Sleep, 100
 	
-	Click 475, %upgrade_y% ; Bench 3
-	Sleep, 1000
+	Click 475, %upgrade_y% ; Gromma's spec choice (Mountain) helps her as tank
+	Sleep, 100
 	
-	Click 590, %upgrade_y% ; Bench 4
-	Sleep, 1000
+	Click 590, %upgrade_y% ;Ishi
+	Sleep, 100
 	
-	Click 705, %upgrade_y% ; Bench 5
-	Sleep, 1000
+	Click 705, %upgrade_y% ;Calliope
+	Sleep, 100
+
+	Click 820, %upgrade_y% ; Krond is two upgrades off of Fire Bolt, requiring one 3spec choice (right)
+	Sleep, 100
 	
-	Click 820, %upgrade_y% ; Bench 6
-	Sleep, 1000	
+	Click 935, %upgrade_y% ;Minsc
+	Sleep, 100
 	
-	Click 935, %upgrade_y% ; Bench 7
-	Sleep, 1000
-	
-	Click 1050, %upgrade_y% ; Bench 8
-	Sleep, 1000
+	Click 1050, %upgrade_y% ;Nrakk
+	Sleep, 100
 		
 	; Now we place our remaining familiars - we defer this to reduce number of variables in the champ upgrade process
 	Click %fam_box_x%, %fam_box_y%, down
-	Sleep, 200
+	Sleep, 100
 	Click %click_x%, %upgrade_y%, up
-	Sleep, 200
+	Sleep, 100
 	Click %fam_box_x%, %fam_box_y%, down
-	Sleep, 200
+	Sleep, 100
 	Click %fam_in_x%, %fam_bot_in_y%, up
-	Sleep, 200
+	Sleep, 100
 	Click %fam_box_x%, %fam_box_y%, down
-	Sleep, 200
+	Sleep, 100
 	Click %fam_out_x%, %fam_bot_out_y%, up
-	Sleep, 200
+	Sleep, 100
 	Click %fam_box_x%, %fam_box_y%, down
-	Sleep, 200
+	Sleep, 100
 	Click %fam_far_x%, %fam_top_in_y%, up
 
-	Sleep, 1000
+	Sleep, 100
 	ControlSend,, {e}, ahk_exe %target% 
-	Sleep, 200
-	MouseMove %shop_x%, %shop_y%
+	Sleep, 100
+	Send ]
 	Sleep, %duration_in_ms%
+	Send [
 }

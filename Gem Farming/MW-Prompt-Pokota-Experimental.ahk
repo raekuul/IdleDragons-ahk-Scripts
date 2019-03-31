@@ -161,9 +161,7 @@ Loop
 	Sleep, 1000
 	Click %charsheet_cancel_x%, %charsheet_cancel_y%
 	Sleep, 100
-	
-	Click 935, %upgrade_y% ; Black Viper is one upgrade off of Jewel Thief, requiring no spec choices.
-	Sleep, 100
+
 	Click 935, %upgrade_y% ; 
 	Sleep, 100
 	

@@ -8,8 +8,9 @@ CoordMode, Mouse, Client
 target = IdleDragons.exe
 
 Gui, Add, text, , In the map, enable Hide Locked and Hide Completed.
-Gui, Add, text, , in the adventure, set your level strategy to "UPG".
-Gui, Add, text, , This script assumes you have Deekin, Gromma, Krond.
+Gui, Add, text, , In the adventure, set your level strategy to "UPG".
+Gui, Add, text, , This script may also be used to farm gems for Black Viper.
+Gui, Add, text, , This script assumes you have Deekin.
 Gui, Add, text, , This script also assumes you have at least four familiars.
 Gui, Add, text, , Minutes per run (starts from setting last familiar):
 Gui, Add, Edit, vDduration_in_minutes
@@ -134,15 +135,7 @@ Loop
 	Click 360, %upgrade_y% ;Celeste
 	Sleep, 100
 	
-	Loop 10
-	{
-		Sleep, 100
-		Click 475, %upgrade_y% ; Gromma's spec choice (Mountain) helps her as tank
-	}
-	Sleep, 1000
-	Click %spec3_choice_left%, %spec3_choice_y%
-	Sleep, 1000
-	Click %charsheet_cancel_x%, %charsheet_cancel_y%
+	Click 475, %upgrade_y% ; Gromma's spec choice (Mountain) helps her as tank
 	Sleep, 100
 	
 	Click 590, %upgrade_y% ;Ishi
@@ -151,22 +144,15 @@ Loop
 	Click 705, %upgrade_y% ;Calliope
 	Sleep, 100
 	
-	Loop 3
+	Click 820, %upgrade_y% ; Krond is two upgrades off of Fire Bolt, requiring one 3spec choice (right)
+	Sleep, 100
+	
+	Loop 4
 	{
+		Click 935, %upgrade_y% ; Minsc is three upgrades off of Boastful, requiring no spec choice.
 		Sleep, 100
-		Click 820, %upgrade_y% ; Krond is two upgrades off of Fire Bolt, requiring one 3spec choice (right)
 	}	
-	Sleep, 1000
-	Click %spec3_choice_right%, %spec3_choice_y%
-	Sleep, 1000
-	Click %charsheet_cancel_x%, %charsheet_cancel_y%
-	Sleep, 100
-	
-	Click 935, %upgrade_y% ; Black Viper is one upgrade off of Jewel Thief, requiring no spec choices.
-	Sleep, 100
-	Click 935, %upgrade_y% ; 
-	Sleep, 100
-	
+
 	Click 1050, %upgrade_y% ;Nrakk
 	Sleep, 100
 		

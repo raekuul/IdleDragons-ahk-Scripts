@@ -74,6 +74,8 @@ slot1u_x = 335
 shop_x = 75
 shop_y = 85
 
+spec2_choice_left = 500
+spec2_choice_right = 750
 spec3_choice_left = 390
 spec3_choice_middle = 635
 spec3_choice_right = 885
@@ -114,18 +116,18 @@ Loop
 	Sleep, 7500 ;
 	ControlSend,, {e}, ahk_exe %target% ; I have my Saved Formation #3 set to quickly tear through the orb on Z14. I suggest you do the same.
 	
-	Sleep, 100 ;
-	Click %fam_box_x%, %fam_box_y%, down
+	Sleep, 1000
+	ControlSend,, {f down}, ahk_exe %target%
+	Sleep, 100 
+	Click %fam_far_x%, %fam_top_in_y%
 	Sleep, 100
-	Click %fam_far_x%, %fam_bot_in_y%, up
+	Click %fam_out_x%, %fam_top_out_y%
 	Sleep, 100
-	Click %fam_box_x%, %fam_box_y%, down
+	Click %fam_in_x%, %fam_top_in_y%
 	Sleep, 100
-	Click %fam_out_x%, %fam_top_out_y%, up
-	Sleep, 100
-	Click %fam_box_x%, %fam_box_y%, down
-	Sleep, 100
-	Click %fam_in_x%, %fam_top_in_y%, up
+	ControlSend,, {f up}, ahk_exe %target%
+	
+	
 	Sleep, 3000
 	
 	Loop 9
@@ -148,11 +150,24 @@ Loop
 	Sleep, 1000
 	Click %charsheet_cancel_x%, %charsheet_cancel_y%
 	Sleep, 100
+	ControlSend,, {f down}, ahk_exe %target%
+	Sleep, 100
+	Click 475, %upgrade_y% ; We've taken Gromma's spec choice, so we can put a familiar on her.
+	Sleep, 100
+	ControlSend,, {f up}, ahk_exe %target%
 	
 	Click 590, %upgrade_y% ;Ishi
 	Sleep, 100
 	
-	Click 705, %upgrade_y% ;Calliope
+	Loop 8
+	{
+		Click 705, %upgrade_y% ;Calliope
+		Sleep, 100
+	}	
+	Sleep, 1000
+	Click %spec2_choice_right%, %spec3_choice_y%
+	Sleep, 1000
+	Click %charsheet_cancel_x%, %charsheet_cancel_y%
 	Sleep, 100
 	
 	Loop 3
@@ -165,6 +180,11 @@ Loop
 	Sleep, 1000
 	Click %charsheet_cancel_x%, %charsheet_cancel_y%
 	Sleep, 100
+	ControlSend,, {f down}, ahk_exe %target%
+	Sleep, 100
+	Click 820, %upgrade_y% ; We've taken Krond's spec choice, so we can put a familiar on him.
+	Sleep, 100
+	ControlSend,, {f up}, ahk_exe %target%
 	
 	Click 935, %upgrade_y% ; Vlahnya
 	Sleep, 100
@@ -173,23 +193,19 @@ Loop
 	Sleep, 100
 		
 	; Now we place our remaining familiars - we defer this to reduce number of variables in the champ upgrade process
-	Click %fam_box_x%, %fam_box_y%, down
+	ControlSend,, {f down}, ahk_exe %target%
 	Sleep, 100
-	Click %click_x%, %upgrade_y%, up
+	Click %click_x%, %upgrade_y%
 	Sleep, 100
-	Click %fam_box_x%, %fam_box_y%, down
+	Click %fam_in_x%, %fam_bot_in_y%
 	Sleep, 100
-	Click %fam_in_x%, %fam_bot_in_y%, up
+	Click %fam_out_x%, %fam_bot_out_y%
 	Sleep, 100
-	Click %fam_box_x%, %fam_box_y%, down
+	Click %fam_far_x%, %fam_bot_in_y%
 	Sleep, 100
-	Click %fam_out_x%, %fam_bot_out_y%, up
-	Sleep, 100
-	Click %fam_box_x%, %fam_box_y%, down
-	Sleep, 100
-	Click %fam_far_x%, %fam_top_in_y%, up
-
-	Sleep, 100
+	ControlSend,, {f up}, ahk_exe %target%
+	Sleep, 1000
+	
 	ControlSend,, {e}, ahk_exe %target% 
 	Sleep, %duration_in_ms%
 }

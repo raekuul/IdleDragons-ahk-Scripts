@@ -111,19 +111,16 @@ Loop
 	Sleep, 7500 ;
 	ControlSend,, {e}, ahk_exe %target% ; I have my Saved Formation #3 set to quickly tear through the orb on Z14. I suggest you do the same.
 	
-	Sleep, 100 ;
-	Click %fam_box_x%, %fam_box_y%, down
+	Sleep, 1000
+	ControlSend,, {f down}, ahk_exe %target%
+	Sleep, 100 
+	Click %fam_far_x%, %fam_top_in_y%
 	Sleep, 100
-	Click %fam_far_x%, %fam_bot_in_y%, up
+	Click %fam_out_x%, %fam_top_out_y%
 	Sleep, 100
-	Click %fam_box_x%, %fam_box_y%, down
+	Click %fam_in_x%, %fam_top_in_y%
 	Sleep, 100
-	Click %fam_out_x%, %fam_top_out_y%, up
-	Sleep, 100
-	Click %fam_box_x%, %fam_box_y%, down
-	Sleep, 100
-	Click %fam_in_x%, %fam_top_in_y%, up
-	Sleep, 3000
+	ControlSend,, {f up}, ahk_exe %target%
 	
 	Loop 8
 	{
@@ -158,20 +155,18 @@ Loop
 		
 	; Now we place our remaining familiars - we defer this to reduce number of variables in the champ upgrade process
 	Click %fam_box_x%, %fam_box_y%, down
+	ControlSend,, {f down}, ahk_exe %target%
 	Sleep, 100
-	Click %click_x%, %upgrade_y%, up
+	Click %click_x%, %upgrade_y%
 	Sleep, 100
-	Click %fam_box_x%, %fam_box_y%, down
+	Click %fam_in_x%, %fam_bot_in_y%
 	Sleep, 100
-	Click %fam_in_x%, %fam_bot_in_y%, up
+	Click %fam_out_x%, %fam_bot_out_y%
 	Sleep, 100
-	Click %fam_box_x%, %fam_box_y%, down
+	Click %fam_far_x%, %fam_bot_in_y%
 	Sleep, 100
-	Click %fam_out_x%, %fam_bot_out_y%, up
-	Sleep, 100
-	Click %fam_box_x%, %fam_box_y%, down
-	Sleep, 100
-	Click %fam_far_x%, %fam_top_in_y%, up
+	ControlSend,, {f up}, ahk_exe %target%
+	Sleep, 1000
 
 	Sleep, 100
 	ControlSend,, {e}, ahk_exe %target% 

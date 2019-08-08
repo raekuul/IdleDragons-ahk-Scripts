@@ -33,8 +33,8 @@ campaigns_x = 105
 torm_y = 100
 kelv_y = 175
 
-neverwinter_x = 570
-neverwinter_y = 600
+neverwinter_x = 500
+neverwinter_y = 685
 
 daggerford_x = 750
 daggerford_y = 580

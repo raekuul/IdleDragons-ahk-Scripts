@@ -35,8 +35,8 @@ kelv_y = 170
 helm_y = 240
 eventy = 310
 
-neverwinter_x = 570
-neverwinter_y = 600
+neverwinter_x = 500
+neverwinter_y = 685
 
 waterdeep_x = 645
 waterdeep_y = 385
@@ -189,9 +189,23 @@ Loop
 	Click 935, %upgrade_y% ; Vlahnya
 	Sleep, 100
 	
+	Loop 8
+	{
+		Click 1050, %upgrade_y% ; Nrakk
+		Sleep, 100
+	}
+	
+	Sleep, 1000
+	Click %spec2_choice_right%, %spec3_choice_y%
+	Sleep, 1000
+	Click %charsheet_cancel_x%, %charsheet_cancel_y%
+	Sleep, 100
+	ControlSend,, {f down}, ahk_exe %target%
+	Sleep, 100
 	Click 1050, %upgrade_y% ; Nrakk
 	Sleep, 100
-		
+	ControlSend,, {f up}, ahk_exe %target%	
+	
 	; Now we place our remaining familiars - we defer this to reduce number of variables in the champ upgrade process
 	ControlSend,, {f down}, ahk_exe %target%
 	Sleep, 100

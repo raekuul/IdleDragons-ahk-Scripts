@@ -33,8 +33,8 @@ campaigns_x = 105
 torm_y = 100
 kelv_y = 175
 
-neverwinter_x = 570
-neverwinter_y = 600
+neverwinter_x = 500
+neverwinter_y = 685
 
 daggerford_x = 750
 daggerford_y = 580
@@ -112,12 +112,14 @@ Loop
 	
 	Sleep, 1000
 	ControlSend,, {f down}, ahk_exe %target%
-	Sleep, 100 
+	Sleep, 100
 	Click %fam_far_x%, %fam_top_in_y%
 	Sleep, 100
 	Click %fam_out_x%, %fam_top_out_y%
 	Sleep, 100
 	Click %fam_in_x%, %fam_top_in_y%
+	Sleep, 5000 
+	Click %click_x%, %upgrade_y%
 	Sleep, 100
 	ControlSend,, {f up}, ahk_exe %target%
 	
@@ -158,8 +160,8 @@ Loop
 	Sleep, 1000
 	Click %charsheet_cancel_x%, %charsheet_cancel_y%
 	Sleep, 100
-	
-	Click 935, %upgrade_y% ;Minsc
+
+	Click 935, %upgrade_y% ; 
 	Sleep, 100
 	
 	Click 1050, %upgrade_y% ;Nrakk
@@ -167,8 +169,6 @@ Loop
 		
 	; Now we place our remaining familiars - we defer this to reduce number of variables in the champ upgrade process
 	ControlSend,, {f down}, ahk_exe %target%
-	Sleep, 100
-	Click %click_x%, %upgrade_y%
 	Sleep, 100
 	Click %fam_in_x%, %fam_bot_in_y%
 	Sleep, 100

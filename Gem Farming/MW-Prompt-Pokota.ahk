@@ -83,6 +83,10 @@ Loop
 {
 	; RESET
 	ControlFocus,, ahk_exe %target% ;
+	Sleep, 1
+	; lock the mouse now
+	
+	Sleep, 1
 	ControlSend,, {r}, ahk_exe %target% ;
 	Sleep, 1000 ;
 	Click %reset_yes_x%, %reset_yes_y% ;
@@ -180,5 +184,7 @@ Loop
 	Sleep, 100
 	ControlSend,, {e}, ahk_exe %target% 
 	Sleep, 100
+	
+	; Unlock the mouse now
 	Sleep, %duration_in_ms%
 }

@@ -1,7 +1,8 @@
 ; this is designed around farming TOMB OF ANNIHILATION - RING OF REGENERATION
 ; the framework can be reused for other campaigns
-; I just went with Kelemvor because I have more favor there
-; THIS IS DESIGNED AROUND 1280 by 720 RESOLUTION
+
+CoordMode, Mouse, Client
+
 target = IdleDragons.exe
 
 Gui, Add, text, , RESOLUTIONS OTHER THAN 1280x720 ARE NOT SUPPORTED

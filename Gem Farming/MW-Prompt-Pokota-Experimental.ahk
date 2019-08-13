@@ -1,11 +1,10 @@
 ; this is designed around farming GRAND TOUR OF THE SWORD COAST - MAD WIZARD
 ; the framework can be reused for other campaigns
-; THIS EXPECTS FOR HIDE LOCKED AND HIDE COMPLETED TO BE ENABLED!!
-; THIS IS DESIGNED AROUND 1280 by 720 RESOLUTION
 
 CoordMode, Mouse, Client
+SendMode Input
 
-target = IdleDragons.exe
+target = Idle Champions
 
 Gui, Add, text, , RESOLUTIONS OTHER THAN 1280x720 ARE NOT SUPPORTED`nThis script is experimental. Use at your own risk.
 Gui, Add, text, , In the map, enable Hide Locked and Hide Completed.`nIn the adventure, set your level strategy to "UPG".
@@ -83,104 +82,123 @@ charsheet_cancel_y = 130
 #r::
 Loop
 {
-	; RESET
-	ControlFocus,, ahk_exe %target% ;
-	ControlSend,, {r}, ahk_exe %target% ;
-	Sleep, 1000 ;
-	Click %reset_yes_x%, %reset_yes_y% ;
-	Sleep, 20000 ;
-	Send ^+h ; Take a screenshot with ShareX of the results screen. If you don't have ^+h set for ShareX, remove this line and the next sleep
-	Sleep, 3000 ;
-	ControlFocus,, ahk_exe %target% ;
-	Click %go_to_map_x%, %go_to_map_y% ;
-	Sleep, 2000 ;
-	Click %campaigns_x%, %kelv_y% ; Switch to Tomb of Annihilation...
-	Sleep, 200 ;
-	Click %campaigns_x%, %torm_y% ; ...and then back to Grand Tour (to reset the map)
-	Sleep, 200 ;
-	Click %neverwinter_x%, %neverwinter_y% ; The location marker for Mad Wizard
-	Sleep, 1000 ;
-	Click %adventures_x%, %pan_top_y%, down
-	Sleep, 300 ;
-	Click %adventures_x%, %pan_bot_y%, up
-	Sleep, 300 ;
-	Click %adventures_x%, %mw_fp_y% ; Mad Wizard Free Play marker
-	Sleep, 200 ;
-	Click %go_x%, %go_y%
-	Sleep, 7500 ;
-	ControlSend,, {e}, ahk_exe %target% ; I have my Saved Formation #3 set to quickly tear through the orb on Z14. I suggest you do the same.
-	
-	Sleep, 1000
-	ControlSend,, {f down}, ahk_exe %target%
-	Sleep, 100
-	Click %fam_far_x%, %fam_top_in_y%
-	Sleep, 100
-	Click %fam_out_x%, %fam_top_out_y%
-	Sleep, 100
-	Click %fam_in_x%, %fam_top_in_y%
-	Sleep, 5000 
-	Click %click_x%, %upgrade_y%
-	Sleep, 100
-	ControlSend,, {f up}, ahk_exe %target%
-	
-	Loop 9
+	test := WinExist("Idle Champions")
+	if (test == 0)
 	{
-		Sleep, 100
-		Click %slot1_x%, %upgrade_y% ;Deekin is eight upgrades off of Confidence in the Boss, requiring no Spec choice
+		ExitApp
 	}
-	Sleep, 100
-	
-	Click 360, %upgrade_y% ;Celeste
-	Sleep, 100
-	
-	Loop 10
+	else
 	{
-		Sleep, 100
-		Click 475, %upgrade_y% ; Gromma's spec choice (Mountain) helps her as tank
-	}
-	Sleep, 1000
-	Click %spec3_choice_left%, %spec3_choice_y%
-	Sleep, 1000
-	Click %charsheet_cancel_x%, %charsheet_cancel_y%
-	Sleep, 100
-	
-	Click 590, %upgrade_y% ;Ishi
-	Sleep, 100
-	
-	Click 705, %upgrade_y% ;Calliope
-	Sleep, 100
-	
-	Loop 3
-	{
-		Sleep, 100
-		Click 820, %upgrade_y% ; Krond is two upgrades off of Fire Bolt, requiring one 3spec choice (right)
-	}	
-	Sleep, 1000
-	Click %spec3_choice_right%, %spec3_choice_y%
-	Sleep, 1000
-	Click %charsheet_cancel_x%, %charsheet_cancel_y%
-	Sleep, 100
-
-	Click 935, %upgrade_y% ; 
-	Sleep, 100
-	
-	Click 1050, %upgrade_y% ;Nrakk
-	Sleep, 100
 		
-	; Now we place our remaining familiars - we defer this to reduce number of variables in the champ upgrade process
-	ControlSend,, {f down}, ahk_exe %target%
-	Sleep, 100
-	Click %fam_in_x%, %fam_bot_in_y%
-	Sleep, 100
-	Click %fam_out_x%, %fam_bot_out_y%
-	Sleep, 100
-	Click %fam_far_x%, %fam_bot_in_y%
-	Sleep, 100
-	ControlSend,, {f up}, ahk_exe %target%
-	Sleep, 1000
+		; If you're looking this closely at the code, judge for yourself if running this script
+		; as an Administrator is a worthwhile risk just to prevent you from hijacking yourself.
 
-	Sleep, 100
-	ControlSend,, {e}, ahk_exe %target% 
-	Sleep, 100
-	Sleep, %duration_in_ms%
+		BlockInput, On
+		
+		; RESET
+		Sleep, 1
+		ControlFocus,, %target% ;
+		Sleep, 1000
+		Send r ;
+		Sleep, 1000 ;
+		Click %reset_yes_x%, %reset_yes_y% ;
+		Sleep, 20000 ;
+		ControlFocus,, ahk_exe %target% ;
+		Click %go_to_map_x%, %go_to_map_y% ;
+		Sleep, 2000 ;
+		Click %campaigns_x%, %kelv_y% ; Switch to Tomb of Annihilation...
+		Sleep, 200 ;
+		Click %campaigns_x%, %torm_y% ; ...and then back to Grand Tour (to reset the map)
+		Sleep, 200 ;
+		Click %neverwinter_x%, %neverwinter_y% ; The "map node" for Mad Wizard
+		Sleep, 300 ;
+		Click %adventures_x%, %pan_top_y%, down
+		Sleep, 500 ;
+		Click %adventures_x%, %pan_bot_y%, up
+		Sleep, 300 ;
+		Click %adventures_x%, %mw_fp_y% ; Mad Wizard Free Play marker
+		Sleep, 200 ;
+		Click %go_x%, %go_y%
+		Sleep, 8500 ;
+		Send e 
+		
+		Sleep, 130
+		Send {f down}
+		Sleep, 130
+		Click %fam_far_x%, %fam_top_in_y%
+		Sleep, 130
+		Click %fam_out_x%, %fam_top_out_y%
+		Sleep, 130
+		Click %fam_in_x%, %fam_top_in_y%
+		Sleep, 130 
+		Click %click_x%, %upgrade_y%
+		Sleep, 130
+		Send {f up}
+
+		Sleep, 4000
+		
+		Loop 9
+		{
+			Sleep, 130
+			Click %slot1_x%, %upgrade_y% ;Deekin is eight upgrades off of Confidence in the Boss, requiring no Spec choice
+		}
+		Sleep, 130
+		
+		Click 360, %upgrade_y% ;Celeste
+		Sleep, 130
+		
+		Loop 10
+		{
+			Sleep, 130
+			Click 475, %upgrade_y% ; Gromma's spec choice (Mountain) helps her as tank
+		}
+		Sleep, 1000
+		Click %spec3_choice_left%, %spec3_choice_y%
+		Sleep, 1000
+		Click %charsheet_cancel_x%, %charsheet_cancel_y%
+		Sleep, 130
+		
+		Click 590, %upgrade_y% ;Ishi
+		Sleep, 130
+		
+		Click 705, %upgrade_y% ;Calliope
+		Sleep, 130
+		
+		Loop 3
+		{
+			Sleep, 130
+			Click 820, %upgrade_y% ; Krond is two upgrades off of Fire Bolt, requiring one 3spec choice (right)
+		}	
+		Sleep, 1000
+		Click %spec3_choice_right%, %spec3_choice_y%
+		Sleep, 1000
+		Click %charsheet_cancel_x%, %charsheet_cancel_y%
+		Sleep, 130
+
+		Click 935, %upgrade_y% ; 
+		Sleep, 130
+		
+		Click 1050, %upgrade_y% ;Nrakk
+		Sleep, 130
+			
+		; Now we place our remaining familiars - we defer this to reduce number of variables in the champ upgrade process
+		Send {f down}
+		Sleep, 130
+		Click %fam_in_x%, %fam_bot_in_y%
+		Sleep, 130
+		Click %fam_out_x%, %fam_bot_out_y%
+		Sleep, 130
+		Click %fam_far_x%, %fam_bot_in_y%
+		Sleep, 130
+		Send {f up}
+		Sleep, 130
+
+		Sleep, 130
+		Send e
+		Sleep, 1
+		
+		; Unblock input so the user can use their machine again.
+		BlockInput, Off
+		Sleep, %duration_in_ms%
+	}
 }

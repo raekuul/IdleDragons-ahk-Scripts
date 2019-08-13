@@ -1,7 +1,5 @@
 ; this is designed around farming GRAND TOUR OF THE SWORD COAST - MAD WIZARD
 ; the framework can be reused for other campaigns
-; THIS EXPECTS FOR HIDE LOCKED AND HIDE COMPLETED TO BE ENABLED!!
-; THIS IS DESIGNED AROUND 1280 by 720 RESOLUTION
 
 CoordMode, Mouse, Client
 

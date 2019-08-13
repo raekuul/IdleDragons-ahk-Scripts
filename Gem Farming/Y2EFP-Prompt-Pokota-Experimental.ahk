@@ -7,10 +7,10 @@ CoordMode, Mouse, Client
 
 target = IdleDragons.exe
 
-Gui, Add, text, , In the map, enable Hide Locked and Hide Completed.
-Gui, Add, text, , in the adventure, set your level strategy to "UPG".
-Gui, Add, text, , This script assumes you have Deekin, Gromma, Krond.
-Gui, Add, text, , This script also assumes you have at least four familiars.
+Gui, Add, text, , RESOLUTIONS OTHER THAN 1280x720 ARE NOT SUPPORTED
+Gui, Add, text, , In the map, enable Hide Locked and Hide Completed.`nIn the adventure, set your level strategy to "UPG".
+Gui, Add, text, , This script will load your 3rd saved formation, using the E hotkey.
+Gui, Add, text, , This script assumes you have Deekin, Gromma, Krond.`nThis script also assumes you have at least four familiars.
 Gui, Add, text, , Minutes per run (starts from setting last familiar):
 Gui, Add, Edit, vDduration_in_minutes
 Gui, Add, Button, default, OK
@@ -191,7 +191,7 @@ Loop
 	
 	Loop 8
 	{
-		Click 1050, %upgrade_y% ; Nrakk
+		Click 1050, %upgrade_y% ; Hitch
 		Sleep, 100
 	}
 	
@@ -202,7 +202,7 @@ Loop
 	Sleep, 100
 	ControlSend,, {f down}, ahk_exe %target%
 	Sleep, 100
-	Click 1050, %upgrade_y% ; Nrakk
+	Click 1050, %upgrade_y% ; Hitch
 	Sleep, 100
 	ControlSend,, {f up}, ahk_exe %target%	
 	

@@ -4,9 +4,11 @@
 ; THIS IS DESIGNED AROUND 1280 by 720 RESOLUTION
 target = IdleDragons.exe
 
-Gui, Add, text, , Minutes per run
-Gui, Add, Edit, vDduration_in_minutes
-Gui, Add, Button, default, OK
+Gui, Add, text, , RESOLUTIONS OTHER THAN 1280x720 ARE NOT SUPPORTED
+Gui, Add, text, , In the map, enable Hide Locked and Hide Completed.`nIn the adventure, set your level strategy to "UPG".
+Gui, Add, text, , This script will not load any saved formations.
+Gui, Add, text, , This is a minimal script that uses only familiars and Deekin.`nThis script assumes you have at least four familiars.
+Gui, Add, text, , Minutes per run (starts from setting last familiar):
 Gui, Show
 Return
 
@@ -72,56 +74,64 @@ CoordMode, Mouse, Client
 #r::
 Loop
 {
+	; RESET
 	ControlFocus,, ahk_exe %target% ;
 	ControlSend,, {r}, ahk_exe %target% ;
 	Sleep, 1000 ;
 	Click %reset_yes_x%, %reset_yes_y% ;
 	Sleep, 20000 ;
-	Send ^+h ;
+	Send ^+h ; Take a screenshot with ShareX of the results screen. If you don't have ^+h set for ShareX, remove this line and the next sleep
 	Sleep, 3000 ;
 	ControlFocus,, ahk_exe %target% ;
 	Click %go_to_map_x%, %go_to_map_y% ;
 	Sleep, 2000 ;
-	Click %campaigns_x%, %torm_y% ; 
+	Click %campaigns_x%, %kelv_y% ; Switch to Tomb of Annihilation...
+	Sleep, 200 ;
+	Click %campaigns_x%, %torm_y% ; ...and then back to Grand Tour (to reset the map)
+	Sleep, 200 ;
+	Click %neverwinter_x%, %neverwinter_y% ; The location marker for Mad Wizard
 	Sleep, 1000 ;
-	Click %neverwinter_x%, %neverwinter_y% ;
-	Sleep, 1000 ;
-	Click %adventures_x%, %mw_fp_y%
-	Sleep, 1000 ;
+	Click %adventures_x%, %pan_top_y%, down
+	Sleep, 300 ;
+	Click %adventures_x%, %pan_bot_y%, up
+	Sleep, 300 ;
+	Click %adventures_x%, %mw_fp_y% ; Mad Wizard Free Play marker
+	Sleep, 200 ;
 	Click %go_x%, %go_y%
-	Sleep, 20000 ;
-	Click %fam_box_x%, %fam_box_y%, down
-	Sleep, 200
-	Click %click_x%, %upgrade_y%, up
-	Sleep, 200
-	Click %fam_box_x%, %fam_box_y%, down
-	Sleep, 200
-	Click %fam_out_x%, %fam_top_out_y%, up
-	Sleep, 200
-	Click %fam_box_x%, %fam_box_y%, down
-	Sleep, 200
-	Click %fam_in_x%, %fam_top_in_y%, up
-	Sleep, 200
-	Click %fam_box_x%, %fam_box_y%, down
-	Sleep, 200
-	Click %fam_in_x%, %fam_bot_in_y%, up
-	Sleep, 200
-	Click %fam_box_x%, %fam_box_y%, down
-	Sleep, 200
-	Click %slot4_x%, %upgrade_y%, up
-	Sleep, 15000
-	Click %spec2_choice_left%, %spec2_choice_y%
-	Sleep, 1000
-	Send {Control Down}
-	MouseClick, Left, %slot1_x%, %upgrade_y%
-	Sleep 100
-	Send {Control Up}
-	Loop 8
+	Sleep, 8500 ;
+	ControlSend,, {f down}, ahk_exe %target%
+	Sleep, 100 
+	Click %fam_far_x%, %fam_top_in_y%
+	Sleep, 100
+	Click %fam_out_x%, %fam_top_out_y%
+	Sleep, 100
+	Click %fam_in_x%, %fam_top_in_y%
+	Sleep, 100
+	ControlSend,, {f up}, ahk_exe %target%
+	
+	Loop 9
 	{
-		Sleep, 1000
-		Click %slot1u_x%, %upgrade_y%
+		Sleep, 100
+		Click %slot1_x%, %upgrade_y% ;Deekin is eight upgrades off of Confidence in the Boss, requiring no Spec choice
 	}
+	Sleep, 100
+	
+	; Now we place our remaining familiars - we defer this to reduce number of variables in the champ upgrade process
+	ControlSend,, {f down}, ahk_exe %target%
+	Sleep, 100
+	Click %click_x%, %upgrade_y%
+	Sleep, 100
+	Click %fam_in_x%, %fam_bot_in_y%
+	Sleep, 100
+	Click %fam_out_x%, %fam_bot_out_y%
+	Sleep, 100
+	Click %fam_far_x%, %fam_bot_in_y%
+	Sleep, 100
+	ControlSend,, {f up}, ahk_exe %target%
 	Sleep, 1000
-	MouseMove %shop_x%, %shop_y%
+
+	Sleep, 100
+	ControlSend,, {e}, ahk_exe %target% 
+	Sleep, 100
 	Sleep, %duration_in_ms%
 }

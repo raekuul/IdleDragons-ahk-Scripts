@@ -1,16 +1,14 @@
 ; this is designed around farming GRAND TOUR OF THE SWORD COAST - MAD WIZARD
 ; the framework can be reused for other campaigns
-; THIS EXPECTS FOR HIDE LOCKED AND HIDE COMPLETED TO BE ENABLED!!
-; THIS IS DESIGNED AROUND 1280 by 720 RESOLUTION
 
 CoordMode, Mouse, Client
 
 target = IdleDragons.exe
 
-Gui, Add, text, , In the map, enable Hide Locked and Hide Completed.
-Gui, Add, text, , in the adventure, set your level strategy to "UPG".
-Gui, Add, text, , This script assumes you have Deekin, Gromma, Krond.
-Gui, Add, text, , This script also assumes you have at least four familiars.
+Gui, Add, text, , RESOLUTIONS OTHER THAN 1280x720 ARE NOT SUPPORTED
+Gui, Add, text, , In the map, enable Hide Locked and Hide Completed.`nIn the adventure, set your level strategy to "UPG".
+Gui, Add, text, , This script will load your 3rd saved formation, using the E hotkey.
+Gui, Add, text, , This script assumes you have Deekin, Gromma, Krond.`nThis script also assumes you have at least four familiars.
 Gui, Add, text, , Minutes per run (starts from setting last familiar):
 Gui, Add, Edit, vDduration_in_minutes
 Gui, Add, Button, default, OK
@@ -123,7 +121,7 @@ Loop
 	Sleep, 100
 	ControlSend,, {f up}, ahk_exe %target%
 	
-	Loop 8
+	Loop 9
 	{
 		Sleep, 100
 		Click %slot1_x%, %upgrade_y% ;Deekin is eight upgrades off of Confidence in the Boss, requiring no Spec choice
@@ -182,7 +180,5 @@ Loop
 	Sleep, 100
 	ControlSend,, {e}, ahk_exe %target% 
 	Sleep, 100
-	Send ]
 	Sleep, %duration_in_ms%
-	Send [
 }

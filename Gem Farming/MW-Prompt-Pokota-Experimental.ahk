@@ -3,8 +3,7 @@
 
 CoordMode, Mouse, Client
 SendMode Input
-
-target = Idle Champions
+SetTitleMatchMode, 3
 
 Gui, Add, text, , RESOLUTIONS OTHER THAN 1280x720 ARE NOT SUPPORTED`nThis script is experimental. Use at your own risk.
 Gui, Add, text, , In the map, enable Hide Locked and Hide Completed.`nIn the adventure, set your level strategy to "UPG".
@@ -97,13 +96,12 @@ Loop
 		
 		; RESET
 		Sleep, 1
-		ControlFocus,, %target% ;
+		WinActivate, Idle Champions
 		Sleep, 1000
 		Send r ;
 		Sleep, 1000 ;
 		Click %reset_yes_x%, %reset_yes_y% ;
 		Sleep, 20000 ;
-		ControlFocus,, ahk_exe %target% ;
 		Click %go_to_map_x%, %go_to_map_y% ;
 		Sleep, 2000 ;
 		Click %campaigns_x%, %kelv_y% ; Switch to Tomb of Annihilation...

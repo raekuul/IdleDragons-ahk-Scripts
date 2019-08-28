@@ -6,6 +6,7 @@ SendMode Input
 SetTitleMatchMode, 3
 
 Gui, Add, text, , RESOLUTIONS OTHER THAN 1280x720 ARE NOT SUPPORTED`nThis script is experimental. Use at your own risk.
+Gui, Add, text, , The keystroke to start this script is WIN+R`nThis does not change your active patron.
 Gui, Add, text, , In the map, enable Hide Locked and Hide Completed.`nIn the adventure, set your level strategy to "UPG".
 Gui, Add, text, , This script will load your 3rd saved formation, using the E hotkey.
 Gui, Add, text, , This script assumes you have Deekin, Gromma, Krond.`nThis script also assumes you have at least four familiars.
@@ -40,8 +41,8 @@ daggerford_y = 580
 adventures_x = 400
 pan_top_y = 110
 pan_bot_y = 600
-ror_fp_y = 195 ; Ring of Regeneration free play
-mw_fp_y = 350 ; Mad Wizard free play
+ror_fp_y = 90 ; Ring of Regeneration free play
+mw_fp_y = 180 ; Mad Wizard free play
 
 go_x = 800
 go_y = 550
@@ -101,21 +102,17 @@ Loop
 		Send r ;
 		Sleep, 1000 ;
 		Click %reset_yes_x%, %reset_yes_y% ;
-		Sleep, 20000 ;
+		Sleep, 22000 ;
 		Click %go_to_map_x%, %go_to_map_y% ;
-		Sleep, 2000 ;
+		Sleep, 3000 ;
 		Click %campaigns_x%, %kelv_y% ; Switch to Tomb of Annihilation...
-		Sleep, 200 ;
-		Click %campaigns_x%, %torm_y% ; ...and then back to Grand Tour (to reset the map)
-		Sleep, 200 ;
-		Click %neverwinter_x%, %neverwinter_y% ; The "map node" for Mad Wizard
-		Sleep, 300 ;
-		Click %adventures_x%, %pan_top_y%, down
 		Sleep, 500 ;
-		Click %adventures_x%, %pan_bot_y%, up
-		Sleep, 300 ;
+		Click %campaigns_x%, %torm_y% ; ...and then back to Grand Tour (to reset the map)
+		Sleep, 500 ;
+		Click %neverwinter_x%, %neverwinter_y% ; The "map node" for Mad Wizard
+		Sleep, 1000 ;
 		Click %adventures_x%, %mw_fp_y% ; Mad Wizard Free Play marker
-		Sleep, 200 ;
+		Sleep, 500 ;
 		Click %go_x%, %go_y%
 		Sleep, 8500 ;
 		Send e 

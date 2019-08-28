@@ -5,7 +5,9 @@ CoordMode, Mouse, Client
 
 target = IdleDragons.exe
 
-Gui, Add, text, , RESOLUTIONS OTHER THAN 1280x720 ARE NOT SUPPORTED
+Gui, Add, text, , DUE TO THE NATURE OF EVENTS, THIS SCRIPT NEEDS TO BE MANUALLY ADJUSTED
+Gui, Add, text, , The keystroke to start this script is WIN+R`nThis does not change your active patron.
+Gui, Add, text, , You'll need to change the waterdeep_x and waterdeep_y variables yourself.`nYou'll also need to change Line 112 to which Year you need.
 Gui, Add, text, , In the map, enable Hide Locked and Hide Completed.`nIn the adventure, set your level strategy to "UPG".
 Gui, Add, text, , This script will load your 3rd saved formation, using the E hotkey.
 Gui, Add, text, , This script assumes you have Deekin, Gromma, Krond.`nThis script also assumes you have at least four familiars.
@@ -42,10 +44,10 @@ waterdeep_y = 385
 adventures_x = 400
 pan_top_y = 110
 pan_bot_y = 600
-ror_fp_y = 195 ; Ring of Regeneration free play
-mw_fp_y = 350 ; Mad Wizard free play
-y1_fp_y = 195 ; Year 1 Event Free Play
-y2_fp_y = 350 ; Year 2 Event Free Play
+ror_fp_y = 90 ; Ring of Regeneration free play
+mw_fp_y = 180 ; Mad Wizard free play
+y1_fp_y = 90 ; Year 1 Event Free Play
+y2_fp_y = 180 ; Year 2 Event Free Play
 
 go_x = 800
 go_y = 550
@@ -108,7 +110,7 @@ Loop
 	Sleep, 300 ;
 	Click %adventures_x%, %pan_bot_y%, up
 	Sleep, 300 ;
-	Click %adventures_x%, %mw_fp_y% ; Mad Wizard Free Play marker
+	Click %adventures_x%, %y2_fp_y% ; Mad Wizard Free Play marker
 	Sleep, 200 ;
 	Click %go_x%, %go_y%
 	Sleep, 7500 ;

@@ -6,6 +6,7 @@ CoordMode, Mouse, Client
 target = IdleDragons.exe
 
 Gui, Add, text, , RESOLUTIONS OTHER THAN 1280x720 ARE NOT SUPPORTED
+Gui, Add, text, , The keystroke to start this script is WIN+R`nThis does not change your active patron.
 Gui, Add, text, , In the map, enable Hide Locked and Hide Completed.`nIn the adventure, set your level strategy to "UPG".
 Gui, Add, text, , This script will not load any saved formations.
 Gui, Add, text, , This is a minimal script that uses only familiars and Deekin.`nThis script assumes you have at least four familiars.
@@ -36,8 +37,8 @@ daggerford_x = 750
 daggerford_y = 580
 
 adventures_x = 400
-ror_fp_y = 195 ; Ring of Regeneration free play
-mw_fp_y = 400 ; Mad Wizard free play
+ror_fp_y = 90 ; Ring of Regeneration free play
+mw_fp_y = 180 ; Mad Wizard free play
 
 go_x = 800
 go_y = 550
@@ -75,64 +76,81 @@ CoordMode, Mouse, Client
 #r::
 Loop
 {
-	; RESET
-	ControlFocus,, ahk_exe %target% ;
-	ControlSend,, {r}, ahk_exe %target% ;
-	Sleep, 1000 ;
-	Click %reset_yes_x%, %reset_yes_y% ;
-	Sleep, 20000 ;
-	Send ^+h ; Take a screenshot with ShareX of the results screen. If you don't have ^+h set for ShareX, remove this line and the next sleep
-	Sleep, 3000 ;
-	ControlFocus,, ahk_exe %target% ;
-	Click %go_to_map_x%, %go_to_map_y% ;
-	Sleep, 2000 ;
-	Click %campaigns_x%, %kelv_y% ; Switch to Tomb of Annihilation...
-	Sleep, 200 ;
-	Click %campaigns_x%, %torm_y% ; ...and then back to Grand Tour (to reset the map)
-	Sleep, 200 ;
-	Click %neverwinter_x%, %neverwinter_y% ; The location marker for Mad Wizard
-	Sleep, 1000 ;
-	Click %adventures_x%, %pan_top_y%, down
-	Sleep, 300 ;
-	Click %adventures_x%, %pan_bot_y%, up
-	Sleep, 300 ;
-	Click %adventures_x%, %mw_fp_y% ; Mad Wizard Free Play marker
-	Sleep, 200 ;
-	Click %go_x%, %go_y%
-	Sleep, 8500 ;
-	ControlSend,, {f down}, ahk_exe %target%
-	Sleep, 100 
-	Click %fam_far_x%, %fam_top_in_y%
-	Sleep, 100
-	Click %fam_out_x%, %fam_top_out_y%
-	Sleep, 100
-	Click %fam_in_x%, %fam_top_in_y%
-	Sleep, 100
-	ControlSend,, {f up}, ahk_exe %target%
-	
-	Loop 9
+	test := WinExist("Idle Champions")
+	if (test == 0)
 	{
-		Sleep, 100
-		Click %slot1_x%, %upgrade_y% ;Deekin is eight upgrades off of Confidence in the Boss, requiring no Spec choice
+		ExitApp
 	}
-	Sleep, 100
-	
-	; Now we place our remaining familiars - we defer this to reduce number of variables in the champ upgrade process
-	ControlSend,, {f down}, ahk_exe %target%
-	Sleep, 100
-	Click %click_x%, %upgrade_y%
-	Sleep, 100
-	Click %fam_in_x%, %fam_bot_in_y%
-	Sleep, 100
-	Click %fam_out_x%, %fam_bot_out_y%
-	Sleep, 100
-	Click %fam_far_x%, %fam_bot_in_y%
-	Sleep, 100
-	ControlSend,, {f up}, ahk_exe %target%
-	Sleep, 1000
+	else
+	{
+		
+		; If you're looking this closely at the code, judge for yourself if running this script
+		; as an Administrator is a worthwhile risk just to prevent you from hijacking yourself.
 
-	Sleep, 100
-	ControlSend,, {e}, ahk_exe %target% 
-	Sleep, 100
-	Sleep, %duration_in_ms%
+		BlockInput, On
+		
+		; RESET
+		Sleep, 1
+		WinActivate, Idle Champions
+		Sleep, 1000
+		Send r ;
+		Sleep, 1000 ;
+		Click %reset_yes_x%, %reset_yes_y% ;
+		Sleep, 22000 ;
+		Click %go_to_map_x%, %go_to_map_y% ;
+		Sleep, 3000 ;
+		Click %campaigns_x%, %torm_y% ; Switch to Grand Tour...
+		Sleep, 500 ;
+		Click %campaigns_x%, %kelv_y% ; ...and then back to Tomb of Annihilation (to reset the map)
+		Sleep, 500 ;
+		Click %daggerford_x%, %daggerford_y% ; The "map node" for Ring of Regeneration
+		Sleep, 1000 ;
+		Click %adventures_x%, %ror_fp_y% ; Ring of Regeneration Free Play marker
+		Sleep, 500 ;
+		Click %go_x%, %go_y%
+		Sleep, 8500 ;
+		Send e 
+		
+		Sleep, 130
+		Send {f down}
+		Sleep, 130
+		Click %fam_far_x%, %fam_top_in_y%
+		Sleep, 130
+		Click %fam_out_x%, %fam_top_out_y%
+		Sleep, 130
+		Click %fam_in_x%, %fam_top_in_y%
+		Sleep, 130 
+		Click %click_x%, %upgrade_y%
+		Sleep, 130
+		Send {f up}
+
+		Sleep, 4000
+		
+		Loop 9
+		{
+			Sleep, 130
+			Click %slot1_x%, %upgrade_y% ;Deekin is eight upgrades off of Confidence in the Boss, requiring no Spec choice
+		}
+		Sleep, 130
+					
+		; Now we place our remaining familiars - we defer this to reduce number of variables in the champ upgrade process
+		Send {f down}
+		Sleep, 130
+		Click %fam_in_x%, %fam_bot_in_y%
+		Sleep, 130
+		Click %fam_out_x%, %fam_bot_out_y%
+		Sleep, 130
+		Click %fam_far_x%, %fam_bot_in_y%
+		Sleep, 130
+		Send {f up}
+		Sleep, 130
+
+		Sleep, 130
+		Send e
+		Sleep, 1
+		
+		; Unblock input so the user can use their machine again.
+		BlockInput, Off
+		Sleep, %duration_in_ms%
+	}
 }

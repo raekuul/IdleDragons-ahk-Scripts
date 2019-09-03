@@ -41,7 +41,7 @@ ror_fp_y = 90 ; Ring of Regeneration free play
 mw_fp_y = 180 ; Mad Wizard free play
 
 go_x = 800
-go_y = 550
+go_y = 580
 
 fam_box_x = 665
 fam_box_y = 540

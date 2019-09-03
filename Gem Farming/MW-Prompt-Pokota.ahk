@@ -6,7 +6,7 @@ CoordMode, Mouse, Client
 target = IdleDragons.exe
 
 Gui, Add, text, , RESOLUTIONS OTHER THAN 1280x720 ARE NOT SUPPORTED
-Gui, Add, text, , The keystroke to start this script is WIN+R`nThis does not change your active patron.
+Gui, Add, text, , The keystroke to start this script is CTRL+R`nThis does not change your active patron.
 Gui, Add, text, , In the map, enable Hide Locked and Hide Completed.`nIn the adventure, set your level strategy to "UPG".
 Gui, Add, text, , This script will load your 3rd saved formation, using the E hotkey.
 Gui, Add, text, , This script assumes you have Deekin, Gromma, Krond.`nThis script also assumes you have at least four familiars.
@@ -45,7 +45,7 @@ ror_fp_y = 90 ; Ring of Regeneration free play
 mw_fp_y = 180 ; Mad Wizard free play
 
 go_x = 800
-go_y = 550
+go_y = 580
 
 fam_box_x = 670
 fam_box_y = 540
@@ -79,7 +79,7 @@ spec3_cancel_y = 110
 charsheet_cancel_x = 1100
 charsheet_cancel_y = 130
 
-#r::
+^r::
 Loop
 {
 	test := WinExist("Idle Champions")

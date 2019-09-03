@@ -6,7 +6,7 @@ SendMode Input
 SetTitleMatchMode, 3
 
 Gui, Add, text, , RESOLUTIONS OTHER THAN 1280x720 ARE NOT SUPPORTED`nThis script is experimental. Use at your own risk.
-Gui, Add, text, , The keystroke to start this script is WIN+R`nThis does not change your active patron.
+Gui, Add, text, , The keystroke to start this script is CTRL+R`nThis does not change your active patron.
 Gui, Add, text, , In the map, enable Hide Locked and Hide Completed.`nIn the adventure, set your level strategy to "UPG".
 Gui, Add, text, , This script will load your 3rd saved formation, using the E hotkey.
 Gui, Add, text, , This script assumes you have Deekin, Gromma, Krond.`nThis script also assumes you have at least four familiars.
@@ -79,7 +79,7 @@ spec3_cancel_y = 110
 charsheet_cancel_x = 1100
 charsheet_cancel_y = 130
 
-#r::
+^r::
 Loop
 {
 	test := WinExist("Idle Champions")

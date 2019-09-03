@@ -6,7 +6,7 @@ CoordMode, Mouse, Client
 target = IdleDragons.exe
 
 Gui, Add, text, , DUE TO THE NATURE OF EVENTS, THIS SCRIPT NEEDS TO BE MANUALLY ADJUSTED
-Gui, Add, text, , The keystroke to start this script is WIN+R`nThis does not change your active patron.
+Gui, Add, text, , The keystroke to start this script is CTRL+R`nThis does not change your active patron.
 Gui, Add, text, , You'll need to change the waterdeep_x and waterdeep_y variables yourself.`nYou'll also need to change Line 112 to which Year you need.
 Gui, Add, text, , In the map, enable Hide Locked and Hide Completed.`nIn the adventure, set your level strategy to "UPG".
 Gui, Add, text, , This script will load your 3rd saved formation, using the E hotkey.
@@ -86,7 +86,7 @@ spec3_cancel_y = 110
 charsheet_cancel_x = 1100
 charsheet_cancel_y = 130
 
-#r::
+^r::
 Loop
 {
 	; RESET

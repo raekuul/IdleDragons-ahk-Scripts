@@ -6,7 +6,7 @@ CoordMode, Mouse, Client
 target = IdleDragons.exe
 
 Gui, Add, text, , RESOLUTIONS OTHER THAN 1280x720 ARE NOT SUPPORTED
-Gui, Add, text, , The keystroke to start this script is WIN+R`nThis does not change your active patron.
+Gui, Add, text, , The keystroke to start this script is CTRL+R`nThis does not change your active patron.
 Gui, Add, text, , In the map, enable Hide Locked and Hide Completed.`nIn the adventure, set your level strategy to "UPG".
 Gui, Add, text, , This script will not load any saved formations.
 Gui, Add, text, , This is a minimal script that uses only familiars and Deekin.`nThis script assumes you have at least four familiars.
@@ -73,7 +73,7 @@ spec2_cancel_y = 110
 
 CoordMode, Mouse, Client
 
-#r::
+^r::
 Loop
 {
 	test := WinExist("Idle Champions")

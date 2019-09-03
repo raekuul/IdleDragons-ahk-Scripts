@@ -50,7 +50,7 @@ y1_fp_y = 90 ; Year 1 Event Free Play
 y2_fp_y = 180 ; Year 2 Event Free Play
 
 go_x = 800
-go_y = 580
+go_y = 590
 
 fam_box_x = 670
 fam_box_y = 540

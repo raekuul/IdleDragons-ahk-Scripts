@@ -41,7 +41,7 @@ ror_fp_y = 90 ; Ring of Regeneration free play
 mw_fp_y = 180 ; Mad Wizard free play
 
 go_x = 800
-go_y = 580
+go_y = 590
 
 fam_box_x = 665
 fam_box_y = 540
@@ -104,7 +104,11 @@ Loop
 		Click %campaigns_x%, %kelv_y% ; ...and then back to Tomb of Annihilation (to reset the map)
 		Sleep, 500 ;
 		Click %daggerford_x%, %daggerford_y% ; The "map node" for Ring of Regeneration
-		Sleep, 1000 ;
+		Sleep, 500 ;
+		Click, %adventures_x%, %pan_top_y%, down ;
+		Sleep, 500 ;
+		Click, %adventures_x%, %pan_bot_y%, up ;
+		Sleep, 500 ;		
 		Click %adventures_x%, %ror_fp_y% ; Ring of Regeneration Free Play marker
 		Sleep, 500 ;
 		Click %go_x%, %go_y%

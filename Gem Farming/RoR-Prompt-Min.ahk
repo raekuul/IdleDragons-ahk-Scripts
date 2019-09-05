@@ -11,6 +11,8 @@ Gui, Add, text, , In the map, enable Hide Locked and Hide Completed.`nIn the adv
 Gui, Add, text, , This script will not load any saved formations.
 Gui, Add, text, , This is a minimal script that uses only familiars and Deekin.`nThis script assumes you have at least four familiars.
 Gui, Add, text, , Minutes per run (starts from setting last familiar):
+Gui, Add, Edit, vDduration_in_minutes
+Gui, Add, Button, default, OK
 Gui, Show
 Return
 
@@ -21,7 +23,7 @@ Gui, Submit
 duration_in_ms := Dduration_in_minutes * 60 * 1000
 
 reset_yes_x = 550
-reset_yes_y = 525
+reset_yes_y = 520
 
 go_to_map_x = 650
 go_to_map_y = 600

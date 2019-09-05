@@ -23,7 +23,7 @@ Gui, Submit
 duration_in_ms := (Dduration_in_minutes * 60 * 1000)
 
 reset_yes_x = 550
-reset_yes_y = 525
+reset_yes_y = 520
 
 go_to_map_x = 650
 go_to_map_y = 600

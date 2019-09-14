@@ -10,9 +10,12 @@ Open-N-Silver-Chests.ahk
 *These scripts will repeatedly run an adventure for a predetermined length of time.*     
 *Please note that these scripts will load your 3rd saved formation using the E hotkey.*
 ###### EFP = Event Free Play
+*Please note that to use this for Year 2 free play you must have completed all Year 1 variants*
 Newstyle will eventually be "user records their map actions once, the script does the rest"     
 Oldstyle blindly clicks the map. The user will need to manually adjust the script
 ###### MW = Mad Wizard
+*Please note that these scripts assume you have completed every base quest in Grand Tour, for map positioning.*
+*You'll also need to have completed all variants of The Cursed Farmer, for selection positioning*
 Pokota and Pokota-Experimental are optimized for my 3rd saved formation.    
 Pokota-Experimental is also used as a testing ground for new features/optimizations.    
 Simple and Simple-Minsc make fewer assumptions about your 3rd saved formation.

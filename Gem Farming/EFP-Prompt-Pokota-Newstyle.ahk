@@ -1,15 +1,16 @@
-; this is designed around farming GRAND TOUR OF THE SWORD COAST - MAD WIZARD
+; this is designed around farming INSERT EVENT NAME HERE
 ; the framework can be reused for other campaigns
 
 CoordMode, Mouse, Client
-SendMode Input
-SetTitleMatchMode, 3
 
-Gui, Add, text, , RESOLUTIONS OTHER THAN 1280x720 ARE NOT SUPPORTED`nThis script is experimental. Use at your own risk.
+target = IdleDragons.exe
+
+Gui, Add, text, , DUE TO THE NATURE OF EVENTS, THIS SCRIPT NEEDS TO BE MANUALLY ADJUSTED
 Gui, Add, text, , The keystroke to start this script is CTRL+R`nThis does not change your active patron.
+Gui, Add, text, , You'll need to change the evt_x and ext_y variables yourself.`nYou'll also need to change Line 126 to which Year you need.
 Gui, Add, text, , In the map, enable Hide Locked and Hide Completed.`nIn the adventure, set your level strategy to "UPG".
 Gui, Add, text, , This script will load your 3rd saved formation, using the E hotkey.
-Gui, Add, text, , This script assumes you have Deekin, Gromma, Shandie.`nThis script also assumes you have at least four familiars.
+Gui, Add, text, , This script assumes you have Deekin, Gromma, Shandie, and Hitch.`nThis script also assumes you have at least four familiars.
 Gui, Add, text, , Minutes per run (starts from setting last familiar):
 Gui, Add, Edit, vDduration_in_minutes
 Gui, Add, Button, default, OK
@@ -30,7 +31,12 @@ go_to_map_y = 600
 
 campaigns_x = 105
 torm_y = 100
-kelv_y = 175
+kelv_y = 165
+helm_y = 230
+event_y = 295
+
+evt_x = 640
+evt_y = 400
 
 neverwinter_x = 500
 neverwinter_y = 685
@@ -43,6 +49,8 @@ pan_top_y = 110
 pan_bot_y = 600
 ror_fp_y = 90 ; Ring of Regeneration free play
 mw_fp_y = 180 ; Mad Wizard free play
+y1_fp_y = 90
+y2_fp_y = 180
 
 go_x = 800
 go_y = 590
@@ -50,14 +58,14 @@ go_y = 590
 fam_box_x = 670
 fam_box_y = 540
 
-fam_left_x = 875
-fam_mid_x = 945
-fam_right_x = 1015
+fam_out_x = 945
+fam_in_x = 875
+fam_far_x = 1015
 
-fam_top_y = 260
-fam_up_mid_y = 330
-fam_down_mid_y = 395
-fam_bot_y = 465
+fam_top_out_y = 260
+fam_top_in_y = 330
+fam_bot_in_y = 395
+fam_bot_out_y = 465
 
 upgrade_y = 700
 swap_y = 580
@@ -72,6 +80,8 @@ shop_y = 85
 spec3_choice_left = 390
 spec3_choice_middle = 635
 spec3_choice_right = 885
+spec2_choice_left = 515
+spec2_choice_right = 765
 spec3_choice_y = 575
 spec3_cancel_x = 890
 spec3_cancel_y = 110
@@ -105,90 +115,100 @@ Loop
 		Sleep, 22000 ;
 		Click %go_to_map_x%, %go_to_map_y% ;
 		Sleep, 3000 ;
-		Click %campaigns_x%, %kelv_y% ; Switch to Tomb of Annihilation...
+		Click %campaigns_x%, %torm_y% ; Switch to Grand Tour...
 		Sleep, 500 ;
-		Click %campaigns_x%, %torm_y% ; ...and then back to Grand Tour (to reset the map)
+		Click %campaigns_x%, %event_y% ; ...and then back to the event (to reset the map)
 		Sleep, 500 ;
-		Click %neverwinter_x%, %neverwinter_y% ; The "map node" for Mad Wizard
+		Click %evt_x%, %evt_y% ; The "map node" for the Event (UPDATE THIS LINE WHEN YOU USE THIS SCRIPT)
 		Sleep, 1000 ;
 		Click, %adventures_x%, %pan_top_y%, down ;
 		Sleep, 500 ;
 		Click, %adventures_x%, %pan_bot_y%, up ;
 		Sleep, 500 ;		
-		Click %adventures_x%, %mw_fp_y% ; Mad Wizard Free Play marker
+		Click %adventures_x%, %y2_fp_y% ; Free Play marker
 		Sleep, 500 ;
 		Click %go_x%, %go_y%
 		Sleep, 8500 ;
 		Send e 
 		
-		Sleep, 200
+		Sleep, 130
 		Send {f down}
-		Sleep, 200
-		Click %fam_mid_x%, %fam_top_y%
-		Sleep, 200
-		Click %fam_left_x%, %fam_up_mid_y%
-		Sleep, 200
-		Click %fam_left_x%, %fam_down_mid_y%
-		Sleep, 200 
+		Sleep, 130
+		Click %fam_far_x%, %fam_top_in_y%
+		Sleep, 130
+		Click %fam_out_x%, %fam_top_out_y%
+		Sleep, 130
+		Click %fam_in_x%, %fam_top_in_y%
+		Sleep, 130 
 		Click %click_x%, %upgrade_y%
-		Sleep, 200
+		Sleep, 130
 		Send {f up}
 
 		Sleep, 4000
 		
 		Loop 9
 		{
-			Sleep, 200
+			Sleep, 130
 			Click %slot1_x%, %upgrade_y% ;Deekin is eight upgrades off of Confidence in the Boss, requiring no Spec choice
 		}
-		Sleep, 200
+		Sleep, 130
 		
 		Click 360, %upgrade_y% ;Celeste
-		Sleep, 200
+		Sleep, 130
 		
 		Loop 10
 		{
-			Sleep, 200
+			Sleep, 130
 			Click 475, %upgrade_y% ; Gromma's spec choice (Mountain) helps her as tank
 		}
 		Sleep, 1000
 		Click %spec3_choice_left%, %spec3_choice_y%
 		Sleep, 1000
 		Click %charsheet_cancel_x%, %charsheet_cancel_y%
-		Sleep, 200
+		Sleep, 130
 		
 		Click 590, %upgrade_y% ;Ishi
-		Sleep, 200
+		Sleep, 130
 		
 		Click 705, %upgrade_y% ;Calliope
-		Sleep, 200
+		Sleep, 130
 		
 		Loop 8
 		{
-			Sleep, 200
-			Click 820, %upgrade_y% ; Krond is two upgrades off of Fire Bolt, requiring one 3spec choice (right)
+			Sleep, 130
+			Click 820, %upgrade_y% ; Shandie is eight upgrades off of Dash, requiring no spec choice
 		}	
-		Sleep, 200
+		Sleep, 1000
 
 		Click 935, %upgrade_y% ; 
-		Sleep, 200
+		Sleep, 130
 		
-		Click 1050, %upgrade_y% ;Nrakk
-		Sleep, 200
+		Loop 8
+		{
+			Sleep, 130
+			Click 1050, %upgrade_y% ; Hitch's spec choice should be More Daggers, to get... uh... more daggers.
+		}	
+		Sleep, 1000
+		Click %spec2_choice_left%, %spec3_choice_y%
+		Sleep, 1000
+		Click %charsheet_cancel_x%, %charsheet_cancel_y%
+		Sleep, 130
 			
 		; Now we place our remaining familiars - we defer this to reduce number of variables in the champ upgrade process
 		Send {f down}
-		Sleep, 200
-		Click %fam_mid_x%, %fam_bot_y%
-		Sleep, 200
-		Click %fam_right_x%, %fam_up_mid_y%
-		Sleep, 200
-		Click %fam_right_x%, %fam_down_mid_y%
-		Sleep, 200
+		Sleep, 130
+		Click %fam_in_x%, %fam_bot_in_y%
+		Sleep, 130
+		Click %fam_out_x%, %fam_bot_out_y%
+		Sleep, 130
+		Click %fam_far_x%, %fam_bot_in_y%
+		Sleep, 130
+		Click 1050, %upgrade_y%
+		Sleep, 130
+		
 		Send {f up}
-		Sleep, 200
 
-		Sleep, 200
+		Sleep, 1000
 		Send e
 		Sleep, 1
 		

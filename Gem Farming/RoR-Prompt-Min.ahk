@@ -9,7 +9,7 @@ Gui, Add, text, , RESOLUTIONS OTHER THAN 1280x720 ARE NOT SUPPORTED
 Gui, Add, text, , The keystroke to start this script is CTRL+R`nThis does not change your active patron.
 Gui, Add, text, , In the map, enable Hide Locked and Hide Completed.`nIn the adventure, set your level strategy to "UPG".
 Gui, Add, text, , This script will not load any saved formations.
-Gui, Add, text, , This is a minimal script that uses only familiars and Deekin.`nThis script assumes you have at least four familiars.
+Gui, Add, text, , This is a minimal script that uses only familiars.`nThis script assumes you have at least four familiars.
 Gui, Add, text, , Minutes per run (starts from setting last familiar):
 Gui, Add, Edit, vDduration_in_minutes
 Gui, Add, Button, default, OK
@@ -35,7 +35,7 @@ kelv_y = 175
 neverwinter_x = 500
 neverwinter_y = 685
 
-daggerford_x = 750
+daggerford_x = 725
 daggerford_y = 580
 
 adventures_x = 400
@@ -48,12 +48,14 @@ go_y = 590
 fam_box_x = 665
 fam_box_y = 540
 
-fam_out_x = 945
-fam_in_x = 875
-fam_top_out_y = 260
-fam_top_in_y = 330
-fam_bot_in_y = 395
-fam_bot_out_y = 465
+fam_left_x = 875
+fam_mid_x = 945
+fam_right_x = 1015
+
+fam_top_y = 260
+fam_up_mid_y = 330
+fam_down_mid_y = 395
+fam_bot_y = 465
 
 upgrade_y = 700
 swap_y = 580
@@ -107,53 +109,35 @@ Loop
 		Sleep, 500 ;
 		Click %daggerford_x%, %daggerford_y% ; The "map node" for Ring of Regeneration
 		Sleep, 500 ;
-		Click, %adventures_x%, %pan_top_y%, down ;
-		Sleep, 500 ;
-		Click, %adventures_x%, %pan_bot_y%, up ;
-		Sleep, 500 ;		
 		Click %adventures_x%, %ror_fp_y% ; Ring of Regeneration Free Play marker
 		Sleep, 500 ;
 		Click %go_x%, %go_y%
 		Sleep, 8500 ;
 		Send e 
 		
-		Sleep, 130
+		Sleep, 200
 		Send {f down}
-		Sleep, 130
-		Click %fam_far_x%, %fam_top_in_y%
-		Sleep, 130
-		Click %fam_out_x%, %fam_top_out_y%
-		Sleep, 130
-		Click %fam_in_x%, %fam_top_in_y%
-		Sleep, 130 
+		Sleep, 200
+		Click %fam_mid_x%, %fam_top_y%
+		Sleep, 200
+		Click %fam_left_x%, %fam_up_mid_y%
+		Sleep, 200
+		Click %fam_left_x%, %fam_down_mid_y%
+		Sleep, 200 
 		Click %click_x%, %upgrade_y%
-		Sleep, 130
+		Sleep, 200
+		Click %fam_mid_x%, %fam_bot_y%
+		Sleep, 200
+		Click %fam_right_x%, %fam_up_mid_y%
+		Sleep, 200
+		Click %fam_right_x%, %fam_down_mid_y%
+		Sleep, 200
 		Send {f up}
 
-		Sleep, 4000
-		
-		Loop 9
-		{
-			Sleep, 130
-			Click %slot1_x%, %upgrade_y% ;Deekin is eight upgrades off of Confidence in the Boss, requiring no Spec choice
-		}
-		Sleep, 130
-					
-		; Now we place our remaining familiars - we defer this to reduce number of variables in the champ upgrade process
-		Send {f down}
-		Sleep, 130
-		Click %fam_in_x%, %fam_bot_in_y%
-		Sleep, 130
-		Click %fam_out_x%, %fam_bot_out_y%
-		Sleep, 130
-		Click %fam_far_x%, %fam_bot_in_y%
-		Sleep, 130
-		Send {f up}
-		Sleep, 130
-
-		Sleep, 130
+		Sleep, 200
 		Send e
 		Sleep, 1
+
 		
 		; Unblock input so the user can use their machine again.
 		BlockInput, Off

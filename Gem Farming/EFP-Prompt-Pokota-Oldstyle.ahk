@@ -38,8 +38,8 @@ eventy = 310
 neverwinter_x = 500
 neverwinter_y = 685
 
-waterdeep_x = 645
-waterdeep_y = 385
+evt_x = 640
+evt_y = 400
 
 adventures_x = 400
 pan_top_y = 110
@@ -94,17 +94,15 @@ Loop
 	ControlSend,, {r}, ahk_exe %target% ;
 	Sleep, 1000 ;
 	Click %reset_yes_x%, %reset_yes_y% ;
-	Sleep, 20000 ;
-	Send ^+h ; Take a screenshot with ShareX of the results screen. If you don't have ^+h set for ShareX, remove this line and the next sleep
-	Sleep, 3000 ;
+	Sleep, 23000 ;
 	ControlFocus,, ahk_exe %target% ;
 	Click %go_to_map_x%, %go_to_map_y% ;
 	Sleep, 2000 ;
 	Click %campaigns_x%, %torm_y% ; Switch to Tomb of Annihilation...
-	Sleep, 200 ;
+	Sleep, 1000 ;
 	Click %campaigns_x%, %eventy% ; ...and then back to Grand Tour (to reset the map)
-	Sleep, 200 ;
-	Click %waterdeep_x%, %waterdeep_y% ; The location marker for Mad Wizard
+	Sleep, 1000 ;
+	Click %evt_x%, %evt_y% ; The location marker for Mad Wizard
 	Sleep, 1000 ;
 	Click %adventures_x%, %pan_top_y%, down
 	Sleep, 300 ;
@@ -119,6 +117,8 @@ Loop
 	Sleep, 1000
 	ControlSend,, {f down}, ahk_exe %target%
 	Sleep, 100 
+	Click %click_x%, %upgrade_y%
+	Sleep, 100
 	Click %fam_far_x%, %fam_top_in_y%
 	Sleep, 100
 	Click %fam_out_x%, %fam_top_out_y%
@@ -133,7 +133,7 @@ Loop
 	Loop 9
 	{
 		Sleep, 100
-		Click %slot1_x%, %upgrade_y% ;Deekin is eight upgrades off of Confidence in the Boss, requiring no Spec choice
+		Click %slot1_x%, %upgrade_y% ; Deekin is eight upgrades off of Confidence in the Boss, requiring no Spec choice
 	}
 	Sleep, 100
 	
@@ -150,11 +150,6 @@ Loop
 	Sleep, 1000
 	Click %charsheet_cancel_x%, %charsheet_cancel_y%
 	Sleep, 100
-	ControlSend,, {f down}, ahk_exe %target%
-	Sleep, 100
-	Click 475, %upgrade_y% ; We've taken Gromma's spec choice, so we can put a familiar on her.
-	Sleep, 100
-	ControlSend,, {f up}, ahk_exe %target%
 	
 	Click 590, %upgrade_y% ;Ishi
 	Sleep, 100
@@ -170,16 +165,6 @@ Loop
 	Click %charsheet_cancel_x%, %charsheet_cancel_y%
 	Sleep, 100
 	
-	Loop 3
-	{
-		Sleep, 100
-		Click 820, %upgrade_y% ; Krond is two upgrades off of Fire Bolt, requiring one 3spec choice (right)
-	}	
-	Sleep, 1000
-	Click %spec3_choice_right%, %spec3_choice_y%
-	Sleep, 1000
-	Click %charsheet_cancel_x%, %charsheet_cancel_y%
-	Sleep, 100
 	ControlSend,, {f down}, ahk_exe %target%
 	Sleep, 100
 	Click 820, %upgrade_y% ; We've taken Krond's spec choice, so we can put a familiar on him.
@@ -208,8 +193,6 @@ Loop
 	
 	; Now we place our remaining familiars - we defer this to reduce number of variables in the champ upgrade process
 	ControlSend,, {f down}, ahk_exe %target%
-	Sleep, 100
-	Click %click_x%, %upgrade_y%
 	Sleep, 100
 	Click %fam_in_x%, %fam_bot_in_y%
 	Sleep, 100

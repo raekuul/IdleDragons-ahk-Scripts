@@ -8,7 +8,8 @@ Open-N-Silver-Chests.ahk
 
 ## Gem Farming (and other automatic reset) scripts
 *These scripts will repeatedly run an adventure for a predetermined length of time.*     
-*Please note that these scripts will load your 3rd saved formation using the E hotkey.*
+*Please note that these scripts will load your 3rd saved formation using the E hotkey.*    
+*These scripts also assume you have at least four familiars - three on the field, one leveling Click Damage*
 ###### EFP = Event Free Play
 *Please note that to use this for Year 2 free play you must have completed all Year 1 variants*
 Newstyle will eventually be "user records their map actions once, the script does the rest"     

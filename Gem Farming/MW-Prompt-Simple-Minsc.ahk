@@ -35,8 +35,8 @@ kelv_y = 175
 neverwinter_x = 500
 neverwinter_y = 685
 
-daggerford_x = 750
-daggerford_y = 580
+daggerford_x = 630
+daggerford_y = 385
 
 adventures_x = 400
 pan_top_y = 110

@@ -36,7 +36,7 @@ neverwinter_x = 500
 neverwinter_y = 685
 
 daggerford_x = 725
-daggerford_y = 580
+daggerford_y = 385
 
 adventures_x = 400
 ror_fp_y = 90 ; Ring of Regeneration free play

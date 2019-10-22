@@ -33,7 +33,8 @@ campaigns_x = 105
 torm_y = 100
 kelv_y = 165
 helm_y = 230
-event_y = 295
+tiamat_y = 295
+event_y = 395
 
 evt_x = 640
 evt_y = 400
@@ -41,8 +42,8 @@ evt_y = 400
 neverwinter_x = 500
 neverwinter_y = 685
 
-daggerford_x = 750
-daggerford_y = 580
+daggerford_x = 630
+daggerford_y = 385
 
 adventures_x = 400
 pan_top_y = 110

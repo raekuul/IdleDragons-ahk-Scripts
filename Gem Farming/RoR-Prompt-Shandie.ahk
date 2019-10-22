@@ -1,15 +1,15 @@
-; this is designed around farming GRAND TOUR OF THE SWORD COAST - MAD WIZARD
+; this is designed around farming TOMB OF ANNIHILATION - RING OF REGENERATION
 ; the framework can be reused for other campaigns
 
 CoordMode, Mouse, Client
-SendMode Input
-SetTitleMatchMode, 3
 
-Gui, Add, text, , RESOLUTIONS OTHER THAN 1280x720 ARE NOT SUPPORTED`nThis script is experimental. Use at your own risk.
+target = IdleDragons.exe
+
+Gui, Add, text, , RESOLUTIONS OTHER THAN 1280x720 ARE NOT SUPPORTED
 Gui, Add, text, , The keystroke to start this script is CTRL+R`nThis does not change your active patron.
 Gui, Add, text, , In the map, enable Hide Locked and Hide Completed.`nIn the adventure, set your level strategy to "UPG".
-Gui, Add, text, , This script will load your 3rd saved formation, using the E hotkey.
-Gui, Add, text, , This script assumes you have Deekin, Gromma, Shandie.`nThis script also assumes you have at least four familiars.
+Gui, Add, text, , This script will not load any saved formations.
+Gui, Add, text, , This script assumes you have Shandie.`nThis script also assumes you have at least four familiars.
 Gui, Add, text, , Minutes per run (starts from setting last familiar):
 Gui, Add, Edit, vDduration_in_minutes
 Gui, Add, Button, default, OK
@@ -20,7 +20,7 @@ GuiClose:
 ButtonOK:
 Gui, Submit 
 
-duration_in_ms := (Dduration_in_minutes * 60 * 1000)
+duration_in_ms := Dduration_in_minutes * 60 * 1000
 
 reset_yes_x = 550
 reset_yes_y = 520
@@ -35,19 +35,17 @@ kelv_y = 175
 neverwinter_x = 500
 neverwinter_y = 685
 
-daggerford_x = 630
+daggerford_x = 725
 daggerford_y = 385
 
 adventures_x = 400
-pan_top_y = 110
-pan_bot_y = 600
 ror_fp_y = 90 ; Ring of Regeneration free play
 mw_fp_y = 180 ; Mad Wizard free play
 
 go_x = 800
 go_y = 590
 
-fam_box_x = 670
+fam_box_x = 665
 fam_box_y = 540
 
 fam_left_x = 875
@@ -64,20 +62,27 @@ swap_y = 580
 click_x = 155
 slot1_x = 245
 slot1u_x = 335
-
+slot4_x = 585
+cswap_x = 405
+cswap_y = 485
 
 shop_x = 75
 shop_y = 85
 
-spec3_choice_left = 390
-spec3_choice_middle = 635
-spec3_choice_right = 885
-spec3_choice_y = 575
-spec3_cancel_x = 890
-spec3_cancel_y = 110
+spec2_choice_left = 510
+spec2_choice_right = 765
+spec3_choice_left = 385
+spec3_choice_mid = 640
+spec3_choice_right = 900
+
+spec2_choice_y = 575
+spec2_cancel_x = 890
+spec2_cancel_y = 110
 
 charsheet_cancel_x = 1100
 charsheet_cancel_y = 130
+
+CoordMode, Mouse, Client
 
 ^r::
 Loop
@@ -105,17 +110,13 @@ Loop
 		Sleep, 22000 ;
 		Click %go_to_map_x%, %go_to_map_y% ;
 		Sleep, 3000 ;
-		Click %campaigns_x%, %kelv_y% ; Switch to Tomb of Annihilation...
+		Click %campaigns_x%, %torm_y% ; Switch to Grand Tour...
 		Sleep, 500 ;
-		Click %campaigns_x%, %torm_y% ; ...and then back to Grand Tour (to reset the map)
+		Click %campaigns_x%, %kelv_y% ; ...and then back to Tomb of Annihilation (to reset the map)
 		Sleep, 500 ;
-		Click %neverwinter_x%, %neverwinter_y% ; The "map node" for Mad Wizard
-		Sleep, 1000 ;
-		Click, %adventures_x%, %pan_top_y%, down ;
+		Click %daggerford_x%, %daggerford_y% ; The "map node" for Ring of Regeneration
 		Sleep, 500 ;
-		Click, %adventures_x%, %pan_bot_y%, up ;
-		Sleep, 500 ;		
-		Click %adventures_x%, %mw_fp_y% ; Mad Wizard Free Play marker
+		Click %adventures_x%, %ror_fp_y% ; Ring of Regeneration Free Play marker
 		Sleep, 500 ;
 		Click %go_x%, %go_y%
 		Sleep, 8500 ;
@@ -132,53 +133,6 @@ Loop
 		Sleep, 200 
 		Click %click_x%, %upgrade_y%
 		Sleep, 200
-		Send {f up}
-
-		Sleep, 4000
-		
-		Loop 9
-		{
-			Sleep, 200
-			Click %slot1_x%, %upgrade_y% ;Deekin is eight upgrades off of Confidence in the Boss, requiring no Spec choice
-		}
-		Sleep, 200
-		
-		Click 360, %upgrade_y% ;Celeste
-		Sleep, 200
-		
-		Loop 10
-		{
-			Sleep, 200
-			Click 475, %upgrade_y% ; Gromma's spec choice (Mountain) helps her as tank
-		}
-		Sleep, 1000
-		Click %spec3_choice_left%, %spec3_choice_y%
-		Sleep, 1000
-		Click %charsheet_cancel_x%, %charsheet_cancel_y%
-		Sleep, 200
-		
-		Click 590, %upgrade_y% ;Ishi
-		Sleep, 200
-		
-		Click 705, %upgrade_y% ;Calliope
-		Sleep, 200
-		
-		Loop 8
-		{
-			Sleep, 200
-			Click 820, %upgrade_y% ; Krond is two upgrades off of Fire Bolt, requiring one 3spec choice (right)
-		}	
-		Sleep, 200
-
-		Click 935, %upgrade_y% ; 
-		Sleep, 200
-		
-		Click 1050, %upgrade_y% ;Nrakk
-		Sleep, 200
-			
-		; Now we place our remaining familiars - we defer this to reduce number of variables in the champ upgrade process
-		Send {f down}
-		Sleep, 200
 		Click %fam_mid_x%, %fam_bot_y%
 		Sleep, 200
 		Click %fam_right_x%, %fam_up_mid_y%
@@ -186,11 +140,19 @@ Loop
 		Click %fam_right_x%, %fam_down_mid_y%
 		Sleep, 200
 		Send {f up}
+		
+		Loop 18
+		{
+			Sleep, 200
+			Click 820, %upgrade_y% ; Shandie is eight upgrades off of Dash, requiring no spec choice
+		}	
+		Sleep, 1000
+		Click %spec3_choice_left%, %spec2_choice_y%
+		Sleep, 1000
+		Click %charsheet_cancel_x%, %charsheet_cancel_y%
 		Sleep, 200
-
-		Sleep, 200
-		Send e
 		Sleep, 1
+
 		
 		; Unblock input so the user can use their machine again.
 		BlockInput, Off

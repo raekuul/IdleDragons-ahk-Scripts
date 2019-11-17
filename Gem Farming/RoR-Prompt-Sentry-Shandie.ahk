@@ -9,7 +9,7 @@ Gui, Add, text, , RESOLUTIONS OTHER THAN 1280x720 ARE NOT SUPPORTED
 Gui, Add, text, , The keystroke to start this script is CTRL+R`nThis does not change your active patron.
 Gui, Add, text, , In the map, enable Hide Locked and Hide Completed.`nIn the adventure, set your level strategy to "UPG".
 Gui, Add, text, , This script will not load any saved formations.
-Gui, Add, text, , This script assumes you have Minsc and Shandie.`nThis script also assumes you have at least four familiars.
+Gui, Add, text, , This script assumes you have Minsc, Sentry and Shandie.`nThis script also assumes you have at least four familiars.
 Gui, Add, text, , Minutes per run (starts from setting last familiar):
 Gui, Add, Edit, vDduration_in_minutes
 Gui, Add, Button, default, OK
@@ -139,11 +139,20 @@ Loop
 		Click %fam_right_x%, %fam_down_mid_y%
 		Sleep, 200
 		Send {f up}
-		
 		Loop 18
 		{
 			Sleep, 200
-			Click 820, %upgrade_y% ; Shandie is eight upgrades off of Dash, requiring no spec choice
+			Click 720, %upgrade_y% ; Sentry is sixteen upgrades off of Echo's Will, requiring one spec choice
+		}	
+		Sleep, 1000
+		Click %spec3_choice_mid%, %spec2_choice_y%
+		Sleep, 1000
+		Click %charsheet_cancel_x%, %charsheet_cancel_y%
+		Sleep, 200
+		Loop 18
+		{
+			Sleep, 200
+			Click 820, %upgrade_y% ; Shandie is eighteen upgrades off of Ranger Training, requiring one spec choice
 		}	
 		Sleep, 1000
 		Click %spec3_choice_left%, %spec2_choice_y%

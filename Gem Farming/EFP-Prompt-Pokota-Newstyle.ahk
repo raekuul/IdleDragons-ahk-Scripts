@@ -13,6 +13,8 @@ Gui, Add, text, , This script will load your 3rd saved formation, using the E ho
 Gui, Add, text, , This script assumes you have Deekin, Gromma, Shandie, and Hitch.`nThis script also assumes you have at least four familiars.
 Gui, Add, text, , Minutes per run (starts from setting last familiar):
 Gui, Add, Edit, vDduration_in_minutes
+Gui, Add, text, , Event Year to run?
+Gui, Add, Edit, vDyearMultiplier
 Gui, Add, Button, default, OK
 Gui, Show
 Return
@@ -46,12 +48,17 @@ daggerford_x = 630
 daggerford_y = 385
 
 adventures_x = 400
+
 pan_top_y = 110
 pan_bot_y = 600
+
+adventure_height = 90
+
 ror_fp_y = 90 ; Ring of Regeneration free play
 mw_fp_y = 180 ; Mad Wizard free play
 y1_fp_y = 90
-y2_fp_y = 180
+
+target_fp := (y1_fp_y + adventure_height * (DyearMultiplier - 1))
 
 go_x = 800
 go_y = 590
@@ -126,7 +133,7 @@ Loop
 		Sleep, 500 ;
 		Click, %adventures_x%, %pan_bot_y%, up ;
 		Sleep, 500 ;		
-		Click %adventures_x%, %y2_fp_y% ; Free Play marker
+		Click, %adventures_x%, %target_fp% ; Free Play marker
 		Sleep, 500 ;
 		Click %go_x%, %go_y%
 		Sleep, 8500 ;

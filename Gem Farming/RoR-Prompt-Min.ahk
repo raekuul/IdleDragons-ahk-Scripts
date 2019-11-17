@@ -9,7 +9,7 @@ Gui, Add, text, , RESOLUTIONS OTHER THAN 1280x720 ARE NOT SUPPORTED
 Gui, Add, text, , The keystroke to start this script is CTRL+R`nThis does not change your active patron.
 Gui, Add, text, , In the map, enable Hide Locked and Hide Completed.`nIn the adventure, set your level strategy to "UPG".
 Gui, Add, text, , This script will not load any saved formations.
-Gui, Add, text, , This is a minimal script that uses only familiars.`nThis script assumes you have at least four familiars.
+Gui, Add, text, , This is a minimal script that uses only familiars and Minsc.`nThis script assumes you have at least four familiars.
 Gui, Add, text, , Minutes per run (starts from setting last familiar):
 Gui, Add, Edit, vDduration_in_minutes
 Gui, Add, Button, default, OK
@@ -35,8 +35,8 @@ kelv_y = 175
 neverwinter_x = 500
 neverwinter_y = 685
 
-daggerford_x = 725
-daggerford_y = 385
+daggerford_x = 640
+daggerford_y = 420
 
 adventures_x = 400
 ror_fp_y = 90 ; Ring of Regeneration free play
@@ -113,7 +113,6 @@ Loop
 		Sleep, 500 ;
 		Click %go_x%, %go_y%
 		Sleep, 8500 ;
-		Send e 
 		
 		Sleep, 200
 		Send {f down}
@@ -133,9 +132,6 @@ Loop
 		Click %fam_right_x%, %fam_down_mid_y%
 		Sleep, 200
 		Send {f up}
-
-		Sleep, 200
-		Send e
 		Sleep, 1
 
 		

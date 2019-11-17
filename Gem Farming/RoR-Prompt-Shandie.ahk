@@ -153,7 +153,7 @@ Loop
 		Loop 5
 		{
 			Sleep, 200
-			Click 820, %upgrade_y% ; Minsc is four upgrades off of Boastful, requiring no spec choice.
+			Click 930, %upgrade_y% ; Minsc is four upgrades off of Boastful, requiring no spec choice.
 		}	
 		Sleep, 1
 

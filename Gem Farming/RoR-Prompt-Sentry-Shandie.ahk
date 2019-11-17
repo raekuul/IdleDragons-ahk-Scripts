@@ -142,7 +142,7 @@ Loop
 		Loop 18
 		{
 			Sleep, 200
-			Click 720, %upgrade_y% ; Sentry is sixteen upgrades off of Echo's Will, requiring one spec choice
+			Click 620, %upgrade_y% ; Sentry is sixteen upgrades off of Echo's Will, requiring one spec choice
 		}	
 		Sleep, 1000
 		Click %spec3_choice_mid%, %spec2_choice_y%
@@ -162,7 +162,7 @@ Loop
 		Loop 5
 		{
 			Sleep, 200
-			Click 820, %upgrade_y% ; Minsc is four upgrades off of Boastful, requiring no spec choice.
+			Click 930, %upgrade_y% ; Minsc is four upgrades off of Boastful, requiring no spec choice.
 		}	
 		Sleep, 1
 

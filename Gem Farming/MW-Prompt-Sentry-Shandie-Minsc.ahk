@@ -9,7 +9,7 @@ Gui, Add, text, , RESOLUTIONS OTHER THAN 1280x720 ARE NOT SUPPORTED`nThis script
 Gui, Add, text, , The keystroke to start this script is CTRL+R`nThis does not change your active patron.
 Gui, Add, text, , In the map, enable Hide Locked and Hide Completed.`nIn the adventure, set your level strategy to "UPG".
 Gui, Add, text, , This script will load your 3rd saved formation, using the E hotkey.
-Gui, Add, text, , This script assumes you have Deekin, Gromma, Shandie.`nThis script also assumes you have at least four familiars.
+Gui, Add, text, , This script assumes you have Deekin, Gromma, Sentry, and Shandie in the saved formation.`nThis script also assumes have familiars set in the saved formation.
 Gui, Add, text, , Minutes per run (starts from setting last familiar):
 Gui, Add, Edit, vDduration_in_minutes
 Gui, Add, Button, default, OK

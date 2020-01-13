@@ -10,7 +10,7 @@ Gui, Add, text, , The keystroke to start this script is CTRL+R`nThis does not ch
 Gui, Add, text, , You'll need to change the evt_x and ext_y variables yourself.`nYou'll also need to change Line 126 to which Year you need.
 Gui, Add, text, , In the map, enable Hide Locked and Hide Completed.`nIn the adventure, set your level strategy to "UPG".
 Gui, Add, text, , This script will load your 3rd saved formation, using the E hotkey.
-Gui, Add, text, , This script assumes you have Deekin, Gromma, Shandie, and Hitch.`nThis script also assumes you have at least four familiars.
+Gui, Add, text, , This script assumes you have Deekin, Gromma, Sentry, Shandie, Minsc, and Hitch in the saved formation.`nThis script also assumes have familiars set in the saved formation.
 Gui, Add, text, , Minutes per run (starts from setting last familiar):
 Gui, Add, Edit, vDduration_in_minutes
 Gui, Add, text, , Event Year to run?
@@ -38,8 +38,8 @@ helm_y = 230
 tiamat_y = 295
 event_y = 395
 
-evt_x = 640
-evt_y = 400
+evt_x = 635
+evt_y = 385
 
 neverwinter_x = 500
 neverwinter_y = 685
@@ -139,84 +139,63 @@ Loop
 		Sleep, 8500 ;
 		Send e 
 		
-		Sleep, 130
-		Send {f down}
-		Sleep, 130
-		Click %fam_far_x%, %fam_top_in_y%
-		Sleep, 130
-		Click %fam_out_x%, %fam_top_out_y%
-		Sleep, 130
-		Click %fam_in_x%, %fam_top_in_y%
-		Sleep, 130 
-		Click %click_x%, %upgrade_y%
-		Sleep, 130
-		Send {f up}
-
-		Sleep, 4000
-		
+		Sleep, 8000
 		Loop 9
 		{
-			Sleep, 130
+			Sleep, 200
 			Click %slot1_x%, %upgrade_y% ;Deekin is eight upgrades off of Confidence in the Boss, requiring no Spec choice
 		}
-		Sleep, 130
+		Sleep, 200
 		
 		Click 360, %upgrade_y% ;Celeste
-		Sleep, 130
+		Sleep, 200
 		
 		Loop 10
 		{
-			Sleep, 130
+			Sleep, 200
 			Click 475, %upgrade_y% ; Gromma's spec choice (Mountain) helps her as tank
 		}
 		Sleep, 1000
 		Click %spec3_choice_left%, %spec3_choice_y%
 		Sleep, 1000
 		Click %charsheet_cancel_x%, %charsheet_cancel_y%
-		Sleep, 130
+		Sleep, 200
 		
-		Click 590, %upgrade_y% ;Ishi
-		Sleep, 130
-		
-		Click 705, %upgrade_y% ;Calliope
-		Sleep, 130
-		
-		Loop 8
+		Loop 18
 		{
-			Sleep, 130
-			Click 820, %upgrade_y% ; Shandie is eight upgrades off of Dash, requiring no spec choice
+			Sleep, 200
+			Click 590, %upgrade_y% ; Sentry is sixteen upgrades off of Echo's Will, requiring one spec choice
 		}	
 		Sleep, 1000
-
-		Click 935, %upgrade_y% ; 
-		Sleep, 130
-		
-		Loop 8
-		{
-			Sleep, 130
-			Click 1050, %upgrade_y% ; Hitch's spec choice should be More Daggers, to get... uh... more daggers.
-		}	
-		Sleep, 1000
-		Click %spec2_choice_left%, %spec3_choice_y%
+		Click %spec3_choice_mid%, %spec2_choice_y%
 		Sleep, 1000
 		Click %charsheet_cancel_x%, %charsheet_cancel_y%
-		Sleep, 130
-			
-		; Now we place our remaining familiars - we defer this to reduce number of variables in the champ upgrade process
-		Send {f down}
-		Sleep, 130
-		Click %fam_in_x%, %fam_bot_in_y%
-		Sleep, 130
-		Click %fam_out_x%, %fam_bot_out_y%
-		Sleep, 130
-		Click %fam_far_x%, %fam_bot_in_y%
-		Sleep, 130
-		Click 1050, %upgrade_y%
-		Sleep, 130
+		Sleep, 200
+				
+		Click 705, %upgrade_y% ;Calliope
+		Sleep, 200
 		
-		Send {f up}
-
+		Loop 18
+		{
+			Sleep, 200
+			Click 820, %upgrade_y% ; Shandie is eighteen upgrades off of Ranger Training, requiring one spec choice
+		}	
 		Sleep, 1000
+		Click %spec3_choice_left%, %spec2_choice_y%
+		Sleep, 1000
+		Click %charsheet_cancel_x%, %charsheet_cancel_y%
+		Sleep, 200
+		
+		Loop 5
+		{
+			Sleep, 200
+			Click 930, %upgrade_y% ; Minsc is four upgrades off of Boastful, requiring no spec choice.
+		}	
+		Sleep, 200
+		
+		Click 1050, %upgrade_y% ;Nrakk
+		Sleep, 200
+		
 		Send e
 		Sleep, 1
 		

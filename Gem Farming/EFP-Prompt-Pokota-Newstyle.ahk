@@ -81,15 +81,17 @@ click_x = 155
 slot1_x = 245
 slot1u_x = 335
 
-
 shop_x = 75
 shop_y = 85
 
-spec3_choice_left = 390
-spec3_choice_middle = 635
-spec3_choice_right = 885
-spec2_choice_left = 515
+spec2_choice_left = 510
 spec2_choice_right = 765
+spec2_choice_y = 575
+
+spec3_choice_left = 385
+spec3_choice_mid = 640
+spec3_choice_middle = 640
+spec3_choice_right = 900
 spec3_choice_y = 575
 spec3_cancel_x = 890
 spec3_cancel_y = 110
@@ -155,9 +157,9 @@ Loop
 			Sleep, 200
 			Click 475, %upgrade_y% ; Gromma's spec choice (Mountain) helps her as tank
 		}
-		Sleep, 1000
+		Sleep, 1100
 		Click %spec3_choice_left%, %spec3_choice_y%
-		Sleep, 1000
+		Sleep, 1100
 		Click %charsheet_cancel_x%, %charsheet_cancel_y%
 		Sleep, 200
 		
@@ -166,9 +168,9 @@ Loop
 			Sleep, 200
 			Click 590, %upgrade_y% ; Sentry is sixteen upgrades off of Echo's Will, requiring one spec choice
 		}	
-		Sleep, 1000
+		Sleep, 1100
 		Click %spec3_choice_mid%, %spec2_choice_y%
-		Sleep, 1000
+		Sleep, 1100
 		Click %charsheet_cancel_x%, %charsheet_cancel_y%
 		Sleep, 200
 				
@@ -180,9 +182,9 @@ Loop
 			Sleep, 200
 			Click 820, %upgrade_y% ; Shandie is eighteen upgrades off of Ranger Training, requiring one spec choice
 		}	
-		Sleep, 1000
+		Sleep, 1100
 		Click %spec3_choice_left%, %spec2_choice_y%
-		Sleep, 1000
+		Sleep, 1100
 		Click %charsheet_cancel_x%, %charsheet_cancel_y%
 		Sleep, 200
 		
@@ -193,10 +195,18 @@ Loop
 		}	
 		Sleep, 200
 		
-		Click 1050, %upgrade_y% ;Nrakk
-		Sleep, 200
+		Loop 8
+		{
+			Click 1050, %upgrade_y% ; Hitch
+			Sleep, 200
+		}
+		Sleep, 1100
+		Click %spec2_choice_left%, %spec2_choice_y%
+		Sleep, 1100
+		Click %charsheet_cancel_x%, %charsheet_cancel_y%
 		
-		Send e
+		Sleep, 200
+		Send e 
 		Sleep, 1
 		
 		; Unblock input so the user can use their machine again.
